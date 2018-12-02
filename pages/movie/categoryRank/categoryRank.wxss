@@ -1,0 +1,18 @@
+/* pages/movie/categoryRank/categoryRank.wxss */
+.content {
+  display: inline-flex;
+  margin-top: 10rpx;
+  margin-left: 15rpx;
+  margin-right: 15 rpx;
+  /* padding: 20rpx; */
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.item-image {
+  width: 330rpx;
+  height: (330 * 1.4)rpx;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  margin-bottom: 30rpx;
+  border-radius: 15rpx;
+}

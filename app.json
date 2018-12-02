@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/movie/movie",
+    "pages/movie/categoryRank/categoryRank"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "电影书籍等排行榜",
+    "navigationBarTextStyle": "black"
+  }
+}

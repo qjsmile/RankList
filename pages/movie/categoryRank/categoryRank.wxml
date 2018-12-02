@@ -1,0 +1,9 @@
+<!--pages/movie/categoryRank/categoryRank.wxml-->
+<view class="content">
+  <block wx:for="{{images}}" wx:for-item="img" wx:for-index="imgIndex" wx:key="image">
+    <image class="item-image"
+    src="{{img.img}}"
+    bindtap="viewFilmDetail">
+    </image>
+  </block>
+</view>

@@ -1,0 +1,50 @@
+/* pages/home/home.wxss */
+.home-table {
+  background-color: #fff;
+  padding: 15rpx;
+}
+
+.home-category {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 15rpx;
+    border: 1px solid #e1e1e1;
+}
+
+.home-info {
+    display: flex;
+    align-items: center;
+}
+
+.home-logo {
+    width: 150rpx;
+    height: 150rpx;
+    margin: 20rpx;
+}
+
+.home-right-info {
+    max-width: 500rpx;
+    flex-direction: column;
+}
+
+.home-title {
+    margin-top: 10rpx;
+    margin-bottom: 0rpx;
+    color: #111111;
+    font-size: 40rpx;
+    font-weight: bold
+}
+
+.home-subTitle {
+    font-size: 25rpx;
+    margin-bottom: 10rpx;
+    color: #777777;
+    font-family: FangSong_GB2312
+}
+
+.home-splitLine {
+    margin-bottom: 15rpx;
+    background-color: #fff;
+}
+
