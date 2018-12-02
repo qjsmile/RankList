@@ -10,7 +10,7 @@
 }
 .item-image {
   width: 330rpx;
-  height: (330 * 1.4)rpx;
+  height: 440rpx;
   margin-left: 15rpx;
   margin-right: 15rpx;
   margin-bottom: 30rpx;

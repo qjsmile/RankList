@@ -20,7 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.fetchMovies("https://douban.uieee.com/v2/movie/top250", 0, 3)
+    this.fetchMovies("https://douban.uieee.com/v2/movie/top250", 0, 10)
   },
 
   fetchMovies: function (url, start, count) {
