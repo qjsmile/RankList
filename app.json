@@ -11,5 +11,35 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "电影书籍等排行榜",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath":"/images/all.jpeg",
+        "selectedIconPath":"/images/movie.png"
+      },
+      {
+        "pagePath": "pages/movie/categoryRank/categoryRank",
+        "text": "电影",
+        "iconPath": "/images/movie.png"
+      },
+      {
+        "pagePath": "pages/movie/movie",
+        "text": "电视剧",
+        "iconPath": "/images/tv.png"
+      },
+      {
+        "pagePath": "pages/movie/movie",
+        "text": "音乐",
+        "iconPath": "/images/music.png"
+      },
+      {
+        "pagePath": "pages/movie/movie",
+        "text": "书籍",
+        "iconPath": "/images/book.png"
+      }
+    ]
   }
 }

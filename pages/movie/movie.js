@@ -5,7 +5,7 @@ Page({
     start: 0,
     hasMore: true,
     showLoading: true,
-    title: "电影排行"
+    movietitle: "电影排行"
   },
 
   viewFilmByTag: function (e) {
