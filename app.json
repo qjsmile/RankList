@@ -4,6 +4,7 @@
     "pages/movie/categoryRank/categoryRank",
     "pages/movie/movieList/movieList",
     "pages/movie/movieDetail/movieDetail",
+    "pages/book/bookList/bookList",
     "pages/logs/logs"
   ],
   "window": {

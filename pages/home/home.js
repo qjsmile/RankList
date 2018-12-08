@@ -27,8 +27,21 @@ Page({
 
   viewCategoryList: function (e) {
     var data = e.currentTarget.dataset
+    const id = Number(data.id)
+    let url = ""
+    if (id == 0) {
+      url = "../movie/categoryRank/categoryRank"
+    } else if (id == 1) {
+      url = "../movie/categoryRank/categoryRank"
+    } else if (id == 2){
+      url = "../movie/categoryRank/categoryRank"
+    } else if (id ==3) {
+      url = "../book/bookList/bookList"
+    } else {
+      url = "../movie/categoryRank/categoryRank"
+    }
     wx.navigateTo({
-      url: "../movie/categoryRank/categoryRank"
+      url: url
     })
   }
 })
