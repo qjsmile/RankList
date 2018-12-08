@@ -1,7 +1,7 @@
 <!--pages/home/home.wxml-->
 <view class ="home-table">
   <block wx:for="{{categoryList}}" wx:for-item="category" wx:for-index="categoryIndex" wx:key="category">
-    <view class="home-category" data-id="{{filmHistoryFilmItem.data.id}}" bindtap="viewFilmDetail">
+    <view class="home-category" data-id="{{categoryIndex}}" bindtap="viewCategoryList">
       <view class="home-info">
           <image class="home-logo" src="{{category.image}}"></image>
           <view class="home-right-info">

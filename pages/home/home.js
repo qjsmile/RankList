@@ -25,7 +25,7 @@ Page({
     ],
   },
 
-  viewFilmDetail: function (e) {
+  viewCategoryList: function (e) {
     var data = e.currentTarget.dataset
     wx.navigateTo({
       url: "../movie/categoryRank/categoryRank"
