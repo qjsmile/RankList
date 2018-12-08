@@ -1,10 +1,7 @@
 
 // pages/movie/categoryRank/categoryRank.js
-Page({
 
-  /**
-   * 页面的初始数据
-   */
+Page({
   data: {
     images: [
       { img: "/images/movie/dbmovie_top250.jpeg"},
@@ -23,10 +20,10 @@ Page({
 
   },
 
-  viewFilmDetail: function (e) {
+  viewMoiveListWithID: function (e) {
     var data = e.currentTarget.dataset
     wx.navigateTo({
-      url: "../../movie/movie"
+      url: "../../movie/movieList/movieList?id=" + data.id
     })
   }
 })

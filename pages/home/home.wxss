@@ -33,7 +33,7 @@
     margin-bottom: 0rpx;
     color: #111111;
     font-size: 40rpx;
-    font-weight: bold
+    font-weight: bold;
 }
 
 .home-subTitle {

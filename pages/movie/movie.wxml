@@ -1,4 +1,0 @@
-<!--pages/movie/movie.wxml-->
-<import src="../../component/movieList/movieList.wxml"/>
-<text>电影排行榜</text>
-<template is="filmList" data="{{films: films, hasMore: hasMore, showLoading: showLoading}}"/>

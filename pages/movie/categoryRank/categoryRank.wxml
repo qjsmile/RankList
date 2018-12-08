@@ -3,7 +3,7 @@
   <block wx:for="{{images}}" wx:for-item="img" wx:for-index="imgIndex" wx:key="image">
     <image class="item-image"
     src="{{img.img}}"
-    bindtap="viewFilmDetail">
+    data-id="{{imgIndex}}" bindtap="viewMoiveListWithID">
     </image>
   </block>
 </view>
