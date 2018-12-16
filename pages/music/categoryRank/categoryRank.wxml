@@ -1,0 +1,12 @@
+<!--pages/music/categoryRank/categoryRank.wxml-->
+<view class="content">
+  <block wx:for="{{musicRankDate}}" wx:for-item="musicRank" wx:for-index="musicRankIndex" wx:key="musicRankKey">
+    <view class="item">
+      <image class="item-image"
+        src="{{musicRank.imgUrl}}"
+        data-id="{{musicRankIndex}}" bindtap="viewMusicListWithID">
+      </image>
+      <view class='item-text'>{{musicRank.type}}</view>
+    </view>
+  </block>
+</view>

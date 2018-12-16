@@ -1,0 +1,20 @@
+<!--pages/music/musicList/musicList.wxml-->
+
+<!-- <view class="header">
+   <view class="">图片</view>
+   <view class="">歌名</view>
+   <view class="">歌手</view>
+   <view class="">时长</view>
+</view> -->
+<view class="musicList">
+  <block wx:for="{{musicList}}" wx:for-item="music" wx:for-index="musicIndex" wx:key="musicKey">
+    <view class="item-music">
+      <image class="item-image" src="{{music.albumPic}}" />
+      <view class="music-common-name">{{music.name}}</view>
+      <view class="music-artistNames">{{music.artistNames}}</view>
+    </view>
+  </block>
+</view>
+<view class="loading-tip">没有更多内容了</view>
+
+

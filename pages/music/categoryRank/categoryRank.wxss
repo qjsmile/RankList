@@ -1,0 +1,31 @@
+/* pages/music/categoryRank/categoryRank.wxss */
+.content {
+  display: inline-flex;
+  margin-top: 10rpx;
+  margin-left: 15rpx;
+  margin-right: 15 rpx;
+  /* padding: 20rpx; */
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  align-content: center
+}
+.item-text {
+  width: 330rpx;
+  text-align: center;
+  margin-top: 10rpx;
+  margin-bottom: 30rpx;
+}
+
+.item-image {
+  width: 330rpx;
+  height: 440rpx;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+  border-radius: 15rpx;
+}
