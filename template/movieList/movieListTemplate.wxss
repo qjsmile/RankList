@@ -27,25 +27,53 @@
 
 .movie-image {
   width: 300rpx;
+  height: 420rpx
+}
+
+.movie-image-pic {
+  width: 300rpx;
   height: 420rpx;
   box-shadow: 10rpx 10rpx 30rpx rgba(0, 0, 0, .2)
 }
 
+.movie-image-rank {
+  width: 30rpx;
+  height: 40rpx;
+  margin-top: -430rpx;
+}
+
+.movie-image-rank-text {
+  font-size: 40rpx;
+  background-color:rgba(0, 0, 0, .6);
+  color: #FFF;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+}
+
 .movie-info {
+  display: flex;
+  flex-direction: column;
   max-width: 350rpx;
   margin-left: 40rpx;
 }
 
 .movie-info-title {
-  font-size: 40rpx;
-  color: #444;
+  font-size: 45rpx;
+  color: rgb(0, 0, 0);
   font-weight: bold;
+  margin-bottom: 20rpx;
 }
 
 .movie-common-text {
   font-size: 30rpx;
-  padding: 5rpx 10rpx;
+  padding: 5rpx 0rpx;
   margin-bottom: 10rpx;
   color: #666;
   display: inline-block;
+}
+
+.itemName {
+  font-size: 30rpx;
+  color: #444;
+  font-weight: bold;
 }

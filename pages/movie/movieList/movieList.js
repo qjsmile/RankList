@@ -1,11 +1,10 @@
 // pages/movie/movieList.js
 
 import { fetchMovies } from '../../../common/movieFetch'
-import { apiList, count } from '../../../common/movieConfig'
-
-var movieListNullTip = {
-  tipText: '亲，找不到电影的浏览记录',
-}
+import { count, movieRankDate } from '../../../common/movieConfig'
+import { chineseMovieList } from '../../../common/chineseMovie'
+import { wordTicketMovieList } from '../../../common/wordTicketMovie'
+import { manweiMovieList } from '../../../common/manweiMovie'
 
 Page({
   data: {
@@ -13,28 +12,19 @@ Page({
     hasMore: true,
     showLoading: true,
     start: 0,
-    movieListNullTip: movieListNullTip,
     typeId: 0,
   },
 
   onLoad: function (options) {
     var that = this
-    const movieType = [
-      "电影top250榜",
-      "电影新片榜",
-      "电影票房榜",
-      "电影口碑榜",
-      "华语电影Top榜",
-      "漫威电影推荐榜"
-    ]
-    
     that.setData({
       typeId: Number(options.id),
     })
 
     wx.setNavigationBarTitle({
-      title: movieType[that.data.typeId]
+      title: movieRankDate[that.data.typeId].type
     })
+
     that.fetchMovies()
   },
 
@@ -42,22 +32,30 @@ Page({
     var that = this
     switch (that.data.typeId) {
       case 0:
-        fetchMovies.call(that, apiList.top, that.data.start, count)
-        break;
       case 1: // 新片榜
-        fetchMovies.call(that, apiList.popular, that.data.start, count)
-        break;
       case 2:
-        fetchMovies.call(that, apiList.coming, that.data.start, count)
-        break;
+        fetchMovies.call(that, movieRankDate[that.data.typeId].api, that.data.start, count)
+        break
       case 3:
-        fetchMovies.call(that, apiList.top, that.data.start, count)
-        break;
+        that.setData({
+          movieList: wordTicketMovieList,
+          hasMore: false,
+          showLoading: false,
+        })
+        break
       case 4:
-        fetchMovies.call(that, apiList.top, that.data.start, count)
-        break;
+        that.setData({
+          movieList: chineseMovieList,
+          hasMore: false,
+          showLoading: false,
+        })
+        break
       case 5:
-        fetchMovies.call(that, apiList.top, that.data.start, count)
+        that.setData({
+          movieList: manweiMovieList,
+          hasMore: false,
+          showLoading: false,
+        })
         break;
       default:
       // do nothing
@@ -85,9 +83,6 @@ Page({
   },
   
   viewMovieDetailByID: function (e) {
-    var data = e.currentTarget.dataset
-    // var keyword = data.tag
-    console.log(e)
-
+    //
   },
 })

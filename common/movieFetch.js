@@ -20,8 +20,24 @@ function fetchMovies(url, start, count) {
             hasMore: false,
           })
         } else {
+          const subjects = res.data.subjects.map(item => {
+            const actors = item.casts.map(actorItem => {
+              return actorItem.name
+            })
+
+            return {
+              'id': item.id,
+              'pic': item.images.small,
+              'title': item.title,
+              'director': item.directors[0].name,
+              'actors': actors.join(" / "),
+              'score': item.rating.average,
+              'date':item.year,
+              'type': item.genres.join(" / "),
+            }
+          })
           that.setData({
-            movieList: that.data.movieList.concat(res.data.subjects),
+            movieList: that.data.movieList.concat(subjects),
             start: that.data.start + res.data.subjects.length,
             showLoading: false
           })
@@ -38,6 +54,17 @@ function fetchMovies(url, start, count) {
   }
 }
 
+function fetchLocalChineseMovies(data) {
+  //
+
+}
+
+function fetchLocalManweiMovies(data, start, count) {
+  //
+}
+
 export { 
-  fetchMovies 
+  fetchMovies,
+  fetchLocalChineseMovies,
+  fetchLocalManweiMovies
 }

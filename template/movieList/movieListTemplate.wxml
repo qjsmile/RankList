@@ -7,27 +7,31 @@
   <view class="movieList">
     <block wx:for="{{movieList}}" wx:for-item="movieItem" wx:for-index="movieIndex" wx:key="movieKey">
       <view class="movie" data-id="{{movieItem.id}}" catchtap="viewMovieDetailByID">
-        <image class="movie-image" src="{{movieItem.images.large}}"></image>
-        <view class="movie-info">
-          <view class="movie-info-title">NO.{{movieIndex + 1}} {{movieItem.title}}</view>
-          <view class="movie-common-text">导演: {{movieItem.directors[0].name}}</view>
-          <view class="movie-common-text">演员:
-            <block wx:for="{{movieItem.casts}}" wx:for-item="movieItemCastItem" wx:for-index="movieItemCastItemIndex" wx:key="movieItemCastKey">
-                {{movieItemCastItem.name}}
-                <block wx:if="{{movieItemCastItemIndex !== movieItem.casts.length - 1}}">
-                  /
-                </block>
-            </block>
+        <view class="movie-image">
+          <image class="movie-image-pic" src="{{movieItem.pic}}"></image>
+          <view class='movie-image-rank'>
+            <text class="movie-image-rank-text">NO.{{movieIndex + 1}}</text>
           </view>
-          <view class="movie-common-text">豆瓣评分:
-            <block wx:if="{{movieItem.rating.average == 0}}">
+        </view>
+        <view class="movie-info">
+          <view class="movie-info-title">{{movieItem.title}}</view>
+          <view class="movie-common-text"><text class = "itemName">导演</text>: {{movieItem.director}}</view>
+          <view class="movie-common-text"><text class = "itemName">演员</text>: {{movieItem.actors}}</view>
+          <view class="movie-common-text"><text class = "itemName">评分</text>:
+            <block wx:if="{{movieItem.score == 0}}">
               暂无评分
             </block>
             <block wx:else>
-              {{movieItem.rating.average}}
+              {{movieItem.score}}
             </block>
           </view>
-          <view class="movie-common-text">上映年份: {{movieItem.year}}年</view>
+          <view class="movie-common-text">
+            <block wx:if="{{movieItem.date && movieItem.date.length > 0}}">
+              <text class = "itemName">上映时间</text>: {{movieItem.date}}
+            </block>
+            <block wx:else>
+            </block>
+          </view>
         </view>
       </view>
       <view class="movie-line"></view>

@@ -1,9 +1,9 @@
 <!--pages/movie/categoryRank/categoryRank.wxml-->
 <view class="content">
-  <block wx:for="{{images}}" wx:for-item="img" wx:for-index="imgIndex" wx:key="image">
+  <block wx:for="{{movieRankDate}}" wx:for-item="movieRank" wx:for-index="movieRankIndex" wx:key="movieRankKey">
     <image class="item-image"
-    src="{{img.img}}"
-    data-id="{{imgIndex}}" bindtap="viewMoiveListWithID">
+    src="{{movieRank.img}}"
+    data-id="{{movieRankIndex}}" bindtap="viewMoiveListWithID">
     </image>
   </block>
 </view>
