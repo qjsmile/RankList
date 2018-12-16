@@ -13,7 +13,7 @@
 	}, -->
 <view class="bookList">
   <block wx:for="{{bookList}}" wx:for-item="bookItem" wx:for-index="bookIndex" wx:key="bookKey">
-    <view class="book">
+    <view class="book" catchtap="bookUrl">
       <view class="book-image">
         <image class="book-image-pic" src="{{bookItem.bookImg}}">
         </image>
