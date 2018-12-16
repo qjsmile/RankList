@@ -1,16 +1,4 @@
 <!--pages/book/bookList/bookList.wxml-->
-	<!-- {
-		"author": "[日] 东野圭吾",
-		"bookImg": "https://img3.doubanio.com/view/subject/m/public/s27264181.jpg",
-		"bookUrl": "https://book.douban.com/subject/25862578/",
-		"date": "2014-5",
-		"press": "南海出版公司",
-		"quote": "一碗精心熬制的东野牌鸡汤，拒绝很难",
-		"score": "8.6",
-		"scoreNum": "335076人评价",
-		"title": "解忧杂货店",
-		"translator": "李盈春"
-	}, -->
 <view class="bookList">
   <block wx:for="{{bookList}}" wx:for-item="bookItem" wx:for-index="bookIndex" wx:key="bookKey">
     <view class="book" catchtap="bookUrl">

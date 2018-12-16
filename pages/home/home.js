@@ -21,7 +21,7 @@ Page({
       {
         "image": "/images/game.png",
         "title": "游戏排行榜",
-        "subTitle": "每一款游戏都是好玩的"
+        "subTitle": "每一款都是人生，酣畅淋漓"
       },
     ],
   },

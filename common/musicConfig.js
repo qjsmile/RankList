@@ -1,4 +1,4 @@
-export const musicRankDate  = [
+export const musicRankDate = [
   { imgUrl: "http://p1.music.126.net/sBzD11nforcuh1jdLSgX7g==/18740076185638788.jpg",
     type: '音乐原创榜'
   },

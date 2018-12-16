@@ -29,14 +29,23 @@
   align-items: center;
   width: 230rpx;
   margin-left: 10rpx;
-  margin-bottom: 20rpx;
+  margin-bottom: 30rpx;
   text-align: center;
+}
+.number {
+  display: flex;
+  flex-direction: row;
+}
+
+.number-image {
+  width: 50rpx;
+  height: 20rpx;
+  padding: 10rpx;
 }
 
 .music-common-name {
   font-size: 30rpx;
   color: #000;
-  margin-bottom: 10rpx;
 }
 
 .music-artistNames {

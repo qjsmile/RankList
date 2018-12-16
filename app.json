@@ -3,15 +3,15 @@
     "pages/home/home",
     "pages/movie/categoryRank/categoryRank",
     "pages/movie/movieList/movieList",
-    "pages/movie/movieDetail/movieDetail",
     "pages/book/bookList/bookList",
-    "pages/logs/logs"
+    "pages/music/categoryRank/categoryRank",
+    "pages/music/musicList/musicList",
+    "pages/game/gameList/gameList"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "电影书籍等排行榜",
-    "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
+    "navigationBarTextStyle": "black"
   }
 }

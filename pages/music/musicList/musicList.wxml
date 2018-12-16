@@ -9,12 +9,16 @@
 <view class="musicList">
   <block wx:for="{{musicList}}" wx:for-item="music" wx:for-index="musicIndex" wx:key="musicKey">
     <view class="item-music">
+      <view class="number">
+        <image class="number-image" src="/images/numFlowerLeft.png" />
+        <view class="music-common-name">NO.{{musicIndex + 1}}</view>
+        <image class="number-image" src="/images/numFlowerRight.png" />
+      </view>
       <image class="item-image" src="{{music.albumPic}}" />
       <view class="music-common-name">{{music.name}}</view>
       <view class="music-artistNames">{{music.artistNames}}</view>
     </view>
   </block>
 </view>
-<view class="loading-tip">没有更多内容了</view>
 
 
