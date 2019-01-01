@@ -39,8 +39,16 @@ Page({
     } else {
       url = "../game/gameList/gameList"
     }
-    wx.navigateTo({
+    wx.switchTab({
       url: url
     })
+  },
+
+  onShareAppMessage: function () {
+    return {
+      title: '周末无聊？进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
+      desc: '周末无聊？进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
+      path: 'pages/home/home'
+    }
   }
 })

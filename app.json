@@ -11,7 +11,44 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "电影书籍等排行榜",
+    "navigationBarTitleText": "电影音乐书籍游戏排行榜",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#11cd6e",
+    "backgroundColor": "#EAEAEA",
+    "list": [
+      {
+        "selectedIconPath": "images/all.png",
+        "iconPath": "images/all.png",
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/movie.png",
+        "iconPath": "images/movie.png",
+        "pagePath": "pages/movie/categoryRank/categoryRank",
+        "text": "电影"
+      },
+      {
+        "selectedIconPath": "images/music.png",
+        "iconPath": "images/music.png",
+        "pagePath": "pages/music/categoryRank/categoryRank",
+        "text": "音乐"
+      },
+      {
+        "selectedIconPath": "images/book.png",
+        "iconPath": "images/book.png",
+        "pagePath": "pages/book/bookList/bookList",
+        "text": "书籍"
+      },
+      {
+        "selectedIconPath": "images/game.png",
+        "iconPath": "images/game.png",
+        "pagePath": "pages/game/gameList/gameList",
+        "text": "游戏"
+      }
+    ]
   }
 }

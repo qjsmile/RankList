@@ -95,12 +95,14 @@
 }
 .game-type {
   font-size: 20rpx;
-  border: 1rpx solid rgb(241, 186, 32);
+  color: rgb(236, 147, 31);
+  /* background-color: rgba(202, 74, 241, 0.199); */
+  border: solid 1rpx rgba(245, 210, 11, 0.596);
   margin-right: 10rpx;
   padding-left: 5rpx;
   padding-right: 5rpx;
-  padding-bottom: 2rpx;
-  padding-top: 2rpx;
+  padding-bottom: 1rpx;
+  padding-top: 1rpx;
 }
 
 .game-size-date{
@@ -117,4 +119,16 @@
 
 .field {
   font-weight: bold;
+}
+
+.top{
+  font-size: 22rpx;
+  position: fixed;
+  right: 10px;
+  bottom: 80px;
+  z-index: 1;
+  background-color: rgba(134, 135, 138, 0.26);
+  color: rgb(243, 0, 0);
+  text-align: center;
+  padding:15rpx;
 }

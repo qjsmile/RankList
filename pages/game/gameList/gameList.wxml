@@ -1,12 +1,12 @@
 <!--pages/game/gameList/gameList.wxml-->
 <view class='topTabSwiper'>
-  <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}'  data-current = "0" bindtap='checkCurrent'>iOS游戏</view>
+  <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}'  data-current = "0" bindtap='checkCurrent'>IOS游戏</view>
   <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}'  data-current = "1" bindtap='checkCurrent'>安卓游戏</view>
   <view class='tab  {{currentData == 2 ? "tabBorer" : ""}}'  data-current = "2" bindtap='checkCurrent'>端游游戏</view>
 </view>
 <swiper class="swiper" current="{{currentTab}}" duration="300" bindchange="bindChange">
   <swiper-item wx:for="{{[0,1,2]}}" wx:key="typeKey">
-    <scroll-view scroll-y="true"  style="height:1100rpx">
+    <scroll-view scroll-y="true" style="height:1100rpx" scroll-top="{{scrollTop.scroll_top}}" bindscroll="scrollTopFun">
       <view class="gameList">
         <block wx:for="{{gameList}}" wx:for-item="gameItem" wx:for-index="gameIndex" wx:key='gameKey'>
           <view class="game" catchtap="gameUrl">
@@ -23,8 +23,8 @@
                 </block>
               </view>
               <view class="game-score-price">
-                <view class="game-score"><text class='field'>分数：</text>{{gameItem.score}}分</view>
-                <view class="game-price"><text class='field'>价格：</text>{{gameItem.price}}</view>
+                <view class="game-score"><text class='field'>评分：</text>{{gameItem.score}}分</view>
+                <view class="game-price" wx:if="{{gameItem.price.length > 0}}"><text class='field'>价格：</text>{{gameItem.price}}</view>
               </view>
               <view class="game-size-date">
                 <view class="game-size" wx:if="{{gameItem.size.length > 0}}"><text class='field'>大小：</text>{{gameItem.size}}</view>
@@ -39,5 +39,7 @@
         </block>
       </view>
     </scroll-view>
+
+    <view class='top' catchtap='returnTop' wx:if="{{scrollTop.goTop_show}}">返回顶部</view>
   </swiper-item>
 </swiper>
