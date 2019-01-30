@@ -6,7 +6,8 @@
     "pages/book/bookList/bookList",
     "pages/music/categoryRank/categoryRank",
     "pages/music/musicList/musicList",
-    "pages/game/gameList/gameList"
+    "pages/game/gameList/gameList",
+    "pages/movie/movieSearch/movieSearch"
   ],
   "window": {
     "backgroundTextStyle": "light",

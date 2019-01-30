@@ -1,4 +1,18 @@
 <!--pages/movie/categoryRank/categoryRank.wxml-->
+
+<view class="weui-search-bar">
+  <navigator url="../movieSearch/movieSearch" class="weui-search-bar_form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input" />
+    </view>
+    <label class="weui-search-bar__label">
+      <icon class="weui-icon-search" type="search" size="14"></icon>
+      <view class="weui-search-bar__text">搜索</view>
+    </label>
+  </navigator>
+</view>
+
 <view class="content">
   <block wx:for="{{movieRankDate}}" wx:for-item="movieRank" wx:for-index="movieRankIndex" wx:key="movieRankKey">
     <image class="item-image"
