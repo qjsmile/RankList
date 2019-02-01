@@ -1,11 +1,4 @@
 <!--pages/music/musicList/musicList.wxml-->
-
-<!-- <view class="header">
-   <view class="">图片</view>
-   <view class="">歌名</view>
-   <view class="">歌手</view>
-   <view class="">时长</view>
-</view> -->
 <view class="musicList">
   <block wx:for="{{musicList}}" wx:for-item="music" wx:for-index="musicIndex" wx:key="musicKey">
     <view class="item-music">
@@ -14,9 +7,9 @@
         <view class="music-common-name">NO.{{musicIndex + 1}}</view>
         <image class="number-image" src="/images/numFlowerRight.png" />
       </view>
-      <image class="item-image" src="{{music.albumPic}}" />
-      <view class="music-common-name">{{music.name}}</view>
-      <view class="music-artistNames">{{music.artistNames}}</view>
+      <image class="item-image" src="{{music.pic}}" />
+      <view class="music-common-name">{{music.title}}</view>
+      <view class="music-artistNames">{{music.author}}</view>
     </view>
   </block>
 </view>
