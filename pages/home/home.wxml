@@ -12,4 +12,7 @@
     </view>
     <view class='home-splitLine'></view>
   </block>
+  <view class='official-account'>
+    <official-account></official-account>
+  </view>
 </view>

@@ -47,4 +47,9 @@
     margin-bottom: 15rpx;
     background-color: #fff;
 }
-
+/* 
+.official-account {
+  background-color: #fff;
+  border-radius: 15rpx;
+  border: 2px solid #e1e1e1;
+} */
