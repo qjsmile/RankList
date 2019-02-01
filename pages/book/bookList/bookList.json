@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "书籍Top250"
+  "navigationBarTitleText": "书籍Top250",
+  "enablePullDownRefresh": true
 }

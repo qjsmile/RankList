@@ -1,4 +1,9 @@
-export function fetchMusicsByJackieLee(url, start, count) {
+
+// 豆瓣top250书籍：https://api.jackielee.cn/wxrank/book/top250?start=0&limit=1
+export const count = 10;
+export const bookTop250Url = 'https://api.jackielee.cn/wxrank/book/top250'
+
+export function fetchBooksByJackieLee(url, start, count) {
   var that = this
   if (that.data.hasMore) {
     that.data.showLoading = true
@@ -21,7 +26,7 @@ export function fetchMusicsByJackieLee(url, start, count) {
           })
         } else {
           that.setData({
-            musicList: that.data.musicList.concat(fetchData),
+            bookList: that.data.bookList.concat(fetchData),
             start: that.data.start + fetchData.length,
             showLoading: false
           })
