@@ -1,10 +1,7 @@
 // pages/movie/movieList.js
 
-import { fetchMovies } from '../../../common/movieFetch'
+import { fetchMoviesByDouBan, fetchMoviesByJackieLee } from '../../../common/movieFetch'
 import { count, movieRankDate } from '../../../common/movieConfig'
-import { chineseMovieList } from '../../../common/chineseMovie'
-import { wordTicketMovieList } from '../../../common/wordTicketMovie'
-import { manweiMovieList } from '../../../common/manweiMovie'
 
 Page({
   data: {
@@ -34,28 +31,12 @@ Page({
       case 0:
       case 1: // 新片榜
       case 2:
-        fetchMovies.call(that, movieRankDate[that.data.typeId].api, that.data.start, count)
+        fetchMoviesByDouBan.call(that, movieRankDate[that.data.typeId].api, that.data.start, count)
         break
       case 3:
-        that.setData({
-          movieList: wordTicketMovieList,
-          hasMore: false,
-          showLoading: false,
-        })
-        break
       case 4:
-        that.setData({
-          movieList: chineseMovieList,
-          hasMore: false,
-          showLoading: false,
-        })
-        break
       case 5:
-        that.setData({
-          movieList: manweiMovieList,
-          hasMore: false,
-          showLoading: false,
-        })
+        fetchMoviesByJackieLee.call(that, movieRankDate[that.data.typeId].api, that.data.start, count)
         break;
       default:
       // do nothing
@@ -88,8 +69,8 @@ Page({
 
   onShareAppMessage: function () {
     return {
-      title: '周末无聊？进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
-      desc: '周末无聊？进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
+      title: '进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
+      desc: '进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
       path: 'pages/home/home'
     }
   }
