@@ -1,9 +1,5 @@
 <!--template/movieList/movieListTemplate.wxml-->
 <template name="movieListTemplate">
-<block wx:if="{{showLoading}}">
-  <view class="loading-tip">玩命加载中…</view>
-</block>
-<block wx:else>
   <view class="movieList">
     <block wx:for="{{movieList}}" wx:for-item="movieItem" wx:for-index="movieIndex" wx:key="movieKey">
       <view class="movie" data-id="{{movieItem.id}}" catchtap="viewMovieDetailByID">
@@ -43,5 +39,4 @@
         <view class="loading-tip">没有更多内容了</view>
     </block>
   </view>
-</block>
 </template>

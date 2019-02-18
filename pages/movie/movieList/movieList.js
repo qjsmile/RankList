@@ -7,7 +7,6 @@ Page({
   data: {
     movieList: [],
     hasMore: true,
-    showLoading: true,
     start: 0,
     typeId: 0,
   },
@@ -49,7 +48,6 @@ Page({
 		that.setData({
       movieList: [],
 			hasMore: true,
-			showLoading: true,
 			start: 0
 		})
     that.fetchMovies()
@@ -58,7 +56,7 @@ Page({
   // 滑到底部加载更多
   onReachBottom: function() {
 		var that = this
-		if (!that.data.showLoading) {
+		if (that.data.hasMore) {
       that.fetchMovies()
 		}
   },

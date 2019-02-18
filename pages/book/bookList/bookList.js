@@ -5,7 +5,6 @@ Page({
   data: {
     bookList: [],
     hasMore: true,
-    showLoading: true,
     start: 0,
   },
 
@@ -25,7 +24,6 @@ Page({
     that.setData({
       movieList: [],
       hasMore: true,
-      showLoading: true,
       start: 0
     })
     that.fetchBooks()
