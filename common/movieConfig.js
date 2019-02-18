@@ -7,10 +7,10 @@ movieRankDate: 电影排行榜页面数据
 世界票房排行榜：https://api.jackielee.cn/wxrank/movie/worldTicketTopMovie?start=0&limit=10
 漫威电影推荐榜：https://api.jackielee.cn/wxrank/movie/dCMovie?start=0&limit=10
 豆瓣电影top250：https://api.jackielee.cn/wxrank/movie/top250?start=0&limit=10
-
+豆瓣电影搜索：https://douban.uieee.com/v2/movie/search?q=keyword
 */
 export const count = 10;
-
+export const movieSearchUrl = 'https://douban.uieee.com/v2/movie/search?'
 export const movieRankDate  = [
   { img: "/images/movie/dbmovie_theaters.jpeg",
     api: 'https://douban.uieee.com/v2/movie/in_theaters?',

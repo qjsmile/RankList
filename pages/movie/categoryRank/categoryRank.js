@@ -19,6 +19,12 @@ Page({
       url: url
     })
   },
+  
+  movieSearch: function() {
+    wx.navigateTo({
+      url: '../movieSearch/movieSearch'
+    })
+  },
 
   onShareAppMessage: function () {
     return {

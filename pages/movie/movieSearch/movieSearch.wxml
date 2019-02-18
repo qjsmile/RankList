@@ -1,0 +1,63 @@
+<!--pages/movie/movieSearch.wxml-->
+
+<import src="/template/movieList/movieListTemplate.wxml"/>
+
+<view class='page-search'>
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" 
+        placeholder="输入影名/演员" value="{{searchWords}}" focus="{{searchInputFocus}}" bindinput="onSearchInputType" />
+        <!--清空内容的icon-->
+        <view class="weui-icon-clear" wx:if="{{searchWords.length > 0}}" bindtap="clearSearchInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+      <label class="weui-search-bar__label" hidden="{{searchInputFocus}}" bindtap="showSearchInput">
+        <icon class="weui-icon-search" type="search" size="14"></icon>
+        <view class="weui-search-bar__text">搜索</view>
+      </label>
+    </view>
+    <view class="weui-search-bar__cancel-btn" hidden="{{!searchInputFocus}}" bindtap="onTapSearchBtn">
+      <block wx:if="{{searchWords.length == 0}}">取消</block>
+      <block wx:else>搜索</block>
+    </view>
+  </view>
+
+  <view class='content'>
+    <view class="movieList">
+      <block wx:for="{{movieList}}" wx:for-item="movieItem" wx:for-index="movieIndex" wx:key="movieKey">
+        <view class="movie" data-id="{{movieItem.id}}" catchtap="viewMovieDetailByID">
+          <view class="movie-image">
+            <image class="movie-image-pic" src="{{movieItem.pic}}"></image>
+          </view>
+          <view class="movie-info">
+            <view class="movie-info-title">{{movieItem.title}}</view>
+            <view class="movie-common-text"><text class = "itemName">导演</text>: {{movieItem.director}}</view>
+            <view class="movie-common-text"><text class = "itemName">演员</text>: {{movieItem.actors}}</view>
+            <view class="movie-common-text"><text class = "itemName">评分</text>:
+              <block wx:if="{{movieItem.score == 0}}">
+                暂无评分
+              </block>
+              <block wx:else>
+                {{movieItem.score}}
+              </block>
+            </view>
+            <view class="movie-common-text">
+              <block wx:if="{{movieItem.date && movieItem.date.length > 0}}">
+                <text class = "itemName">上映时间</text>: {{movieItem.date}}
+              </block>
+              <block wx:else>
+              </block>
+            </view>
+          </view>
+        </view>
+        <view class="movie-line"></view>
+      </block>
+      <block wx:if="{{!hasMore}}">
+        <view class="loading-tip">没有更多内容了</view>
+      </block>
+    </view>
+  </view>
+</view>
