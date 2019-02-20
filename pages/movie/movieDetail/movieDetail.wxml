@@ -5,7 +5,6 @@
   <view class='big-bg' style='background-image:url({{details.images.large}});'>
     <view></view>
   </view>
-
   <scroll-view class='scroll' scroll-y enable-back-to-top>
     <view class='bg-img' wx:if='{{details.images}}' style='height:{{bgImgHeight}}px;'>
       <view class='brief'>
@@ -29,21 +28,6 @@
       {{pubdates}} {{WxUtil.arr2str(details.countries, " / ")}}
       {{details.directors[0].name}}(导演) / {{casts}}</text>
     </view>
-    <!-- 播放源 -->
-    <view class='play-source' wx:if='{{details.videos.length>0}}'>
-      <navigator url='/pages/pMovie/pages/sources/sources?id={{id}}'>
-        <view class='source-container'>
-          <view>
-            <i class="fa fa-play-circle" aria-hidden="true"></i>
-            <text>在线观看</text>
-          </view>
-          <view>
-            <text class='sources'>{{details.videos.length}}个播放源</text>
-            <i class="fa fa-angle-right" aria-hidden="true"></i>
-          </view>
-        </view>
-      </navigator>
-    </view>
     <!-- 剧情简介 -->
     <view class='brief-summary'>
       <text class='subtitle'>剧情简介\n</text>
@@ -52,7 +36,7 @@
     </view>
     <!-- 影人 -->
     <view class='casts'>
-      <text class='subtitle'>影人</text>
+      <text class='subtitle'>导演 / 演员</text>
       <scroll-view scroll-x>
         <block wx:for='{{details.directors}}' wx:key='id'>
           <template is='item-casts' data='{{item,isDirec:true}}' />
@@ -67,20 +51,41 @@
     <view class='photos'>
       <text class='subtitle'>预告片 / 剧照</text>
       <scroll-view scroll-x>
-        <navigator wx:if='{{details.trailers&&details.trailers[0]}}' url='../trailers/trailers?id={{details.id}}&resource={{details.trailers[0].resource_url}}' class='trailer'>
-          <image class='image' src='{{details.trailers[0].medium}}' />
-          <view class='front'>
-            <view class='icon'>
-              <image src='/images/white_play_icon.png' mode='widthFix' />
+        <block wx:if='{{details.trailers&&details.trailers[0]}}'>
+          <view class='trailer' data-currurl='{{details.trailers[0].resource_url}}' data-trailers='{{details.trailers}}' catchtap="onPlayMovieTrailers">
+            <image class='image' src='{{details.trailers[0].medium}}' />
+            <view class='front'>
+              <view class='icon'>
+                <image src='/images/white_play_icon.png' mode='widthFix' />
+              </view>
             </view>
-          </view>
-        </navigator>
+         </view>
+        </block>
+
         <block wx:for='{{details.photos}}' wx:key='id'>
           <view class='trailer' data-img='{{item.image}}' bindtap='onPreviewImage'>
             <image class='image' src='{{item.image}}' />
           </view>
         </block>
       </scroll-view>
+    </view>
+    <!-- 播放源 -->
+    <view class='play-source' wx:if='{{details.videos.length>0}}'>
+      <text class='subtitle'>{{details.videos.length}}个播放源,点击复制视频链接</text>
+      <block wx:for='{{details.videos}}' wx:key='source.literal'>
+        <view class='sources-item' bindtap='onCopyUrl' data-url='{{item.sample_link}}'>
+          <view class='item-container'>
+            <view>
+              <image class='icon' src='{{item.source.pic}}' mode='widthFix'/>
+              <text>{{item.source.name}}</text>
+            </view>
+            <view>
+              <text>{{item.need_pay?"收费":"免费"}}</text>
+              <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </view>
+          </view>
+        </view>
+      </block>
     </view>
     <!-- 短评 -->
     <view class='comments'>

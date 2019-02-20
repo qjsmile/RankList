@@ -8,7 +8,8 @@
     "pages/music/musicList/musicList",
     "pages/game/gameList/gameList",
     "pages/movie/movieSearch/movieSearch",
-    "pages/movie/movieDetail/movieDetail"
+    "pages/movie/movieDetail/movieDetail",
+    "pages/movie/movieTrailers/movieTrailers"
   ],
   "window": {
     "backgroundTextStyle": "light",

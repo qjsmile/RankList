@@ -98,7 +98,6 @@ Page({
       isFold: !isFold
     })
   },
-
   // 剧照预览
   onPreviewImage(e) {
     const { img } = e.currentTarget.dataset;
@@ -110,6 +109,28 @@ Page({
     wx.previewImage({
       current: img,
       urls
+    })
+  },
+  // 播放预告片
+  onPlayMovieTrailers(e) {
+    let currUrl = e.currentTarget.dataset.currurl;
+    let trailers = encodeURIComponent(JSON.stringify(e.currentTarget.dataset.trailers));
+    wx.navigateTo({
+      url: '/pages/movie/movieTrailers/movieTrailers?trailers=' + trailers + '&currurl=' + currUrl
+    })
+  },
+
+  // 复制播放地址
+  onCopyUrl: function(e) {
+    const {url} = e.currentTarget.dataset;
+    wx.setClipboardData({
+      data: url,
+      success: res => {
+        wx.showModal({
+          content: `播放地址已复制到剪贴板 \n 前往浏览器粘贴访问`,
+          showCancel: false
+        })
+      }
     })
   }
 })
