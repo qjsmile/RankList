@@ -8,9 +8,11 @@ movieRankDate: 电影排行榜页面数据
 漫威电影推荐榜：https://api.jackielee.cn/wxrank/movie/dCMovie?start=0&limit=10
 豆瓣电影top250：https://api.jackielee.cn/wxrank/movie/top250?start=0&limit=10
 豆瓣电影搜索：https://douban.uieee.com/v2/movie/search?q=keyword
+豆瓣详情：https://douban.uieee.com/v2/movie/subject/26942674
 */
+
 export const count = 10;
-export const movieSearchUrl = 'https://douban.uieee.com/v2/movie/search?'
+export const movieSearchUrl = 'https://jackielee.cn/wxrank/movie/search?'
 export const movieRankDate  = [
   { img: "/images/movie/dbmovie_theaters.jpeg",
     api: 'https://douban.uieee.com/v2/movie/in_theaters?',
@@ -25,15 +27,15 @@ export const movieRankDate  = [
     type: '电影Top250榜'
   },
   { img: "/images/movie/dbmovie_ticket.jpeg",
-    api: 'https://api.jackielee.cn/wxrank/movie/worldTicketTopMovie?',
+    api: 'https://jackielee.cn/wxrank/movie/worldTicketTopMovie?',
     type: '电影票房榜'
   },
   { img: "/images/movie/movie_chinese.jpeg",
-    api: 'https://api.jackielee.cn/wxrank/movie/chinaTopMovie?',
+    api: 'https://jackielee.cn/wxrank/movie/chinaTopMovie?',
     type: '华语电影Top榜'
   },
   { img: "/images/movie/movie_manwei.jpeg",
-    api: 'https://api.jackielee.cn/wxrank/movie/dCMovie?',
+    api: 'https://jackielee.cn/wxrank/movie/dCMovie?',
     type: '漫威电影推荐榜'
   },
 ];

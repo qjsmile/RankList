@@ -23,7 +23,7 @@ Page({
 
   searchMoviesByWords() {
     var that = this
-    searchMovies.call(that, "https://api.jackielee.cn/wxrank/movie/worldTicketTopMovie", that.data.searchWords, that.data.start, count)
+    searchMovies.call(that, movieSearchUrl, that.data.searchWords, that.data.start, count)
   },
 
   // 滑到底部加载更多
@@ -56,5 +56,5 @@ Page({
     that.setData({
       searchWords: words
     });
-  }
+  },
 })

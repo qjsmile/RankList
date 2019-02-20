@@ -62,7 +62,12 @@ Page({
   },
   
   viewMovieDetailByID: function (e) {
-    //
+    var data = e.currentTarget.dataset
+    const id = Number(data.id)
+    let url = "../../movie/movieDetail/movieDetail?id=" + id
+    wx.navigateTo({
+      url: url
+    })
   },
 
   onShareAppMessage: function () {
