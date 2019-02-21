@@ -1,7 +1,7 @@
 
-// 豆瓣top250书籍：https://api.jackielee.cn/wxrank/book/top250?start=0&limit=1
+// 豆瓣top250书籍：https://jackielee.cn/wxrank/book/top250?start=0&limit=1
 export const count = 10;
-export const bookTop250Url = 'https://api.jackielee.cn/wxrank/book/top250'
+export const bookTop250Url = 'https://jackielee.cn/wxrank/book/top250'
 
 export function fetchBooksByJackieLee(url, start, count) {
   var that = this
