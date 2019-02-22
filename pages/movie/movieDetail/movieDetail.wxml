@@ -1,17 +1,22 @@
 <!--pages/movie/movieDetail.wxml-->
 <import src='/template/rating/rating'/>
 <import src='/template/casts/casts'/>
+<wxs src='../../../util.wxs' module='WxUtil' />
+
+
 <view class='page-detail'>
   <view class='big-bg' style='background-image:url({{details.images.large}});'>
     <view></view>
   </view>
+
   <scroll-view class='scroll' scroll-y enable-back-to-top>
+    <!-- 基础信息 -->
     <view class='bg-img' wx:if='{{details.images}}' style='height:{{bgImgHeight}}px;'>
       <view class='brief'>
-        <image class='img-mv' src='{{details.images.large}}' mode='widthFix' />
+        <image class='img-mv' src='{{details.images.large}}' mode='aspectFill' />
         <view class='.brief-info'>
           <text wx:if='{{details.title}}' class='title'>{{details.title}}</text>
-          <text class='title' wx:if='{{details.original_title && details.original_title !== details.title}}'>{{details.original_title}}</text>
+          <text wx:if='{{details.original_title && details.original_title !== details.title}}' class='title'>{{details.original_title}}</text>
           <view class='rating'>
             <text wx:if='{{details.rating}}'>{{details.rating.average}}</text>
             <view>
@@ -44,7 +49,6 @@
         <block wx:for='{{details.casts}}' wx:key='id'>
           <template is='item-casts' data='{{item,isDirec:false}}' />
         </block>
-        <template is='item-casts-all' />
       </scroll-view>
     </view>
     <!-- 预告及剧照 -->
@@ -70,7 +74,7 @@
       </scroll-view>
     </view>
     <!-- 播放源 -->
-    <view class='play-source' wx:if='{{details.videos.length>0}}'>
+    <view class='page-source' wx:if='{{details.videos.length>0}}'>
       <text class='subtitle'>{{details.videos.length}}个播放源,点击复制视频链接</text>
       <block wx:for='{{details.videos}}' wx:key='source.literal'>
         <view class='sources-item' bindtap='onCopyUrl' data-url='{{item.sample_link}}'>

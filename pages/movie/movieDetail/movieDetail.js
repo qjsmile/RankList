@@ -90,7 +90,6 @@ Page({
       })
     })
   },
-
   // 折叠开关
   foldToggle() {
     const { isFold } = this.data;
@@ -119,7 +118,6 @@ Page({
       url: '/pages/movie/movieTrailers/movieTrailers?trailers=' + trailers + '&currurl=' + currUrl
     })
   },
-
   // 复制播放地址
   onCopyUrl: function(e) {
     const {url} = e.currentTarget.dataset;

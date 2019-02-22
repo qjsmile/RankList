@@ -1,0 +1,7 @@
+var arr2str = function( arr, separator ) {
+  return arr.join(separator);
+}
+
+module.exports = {
+  arr2str: arr2str,
+}

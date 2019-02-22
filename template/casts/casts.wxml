@@ -4,7 +4,7 @@
       <image class='avatar' src='{{item.avatars.medium}}' />
       <view class='item-casts-name'>
         <text class='single-line'>{{item.name}}</text>
-        <text class='single-line'>{{isDirec?"导演":"饰"}}</text>
+        <text class='single-line'>{{isDirec?"导演":""}}</text>
       </view>
     </view>
   </view>

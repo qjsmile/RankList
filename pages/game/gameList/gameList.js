@@ -51,7 +51,7 @@ Page({
     }
   },
 
-  //返回顶部
+  // 返回顶部
   returnTop: function (e) {
     var scroll_top = this.data.scrollTop.scroll_top;
     if (scroll_top == 1) {
@@ -64,9 +64,9 @@ Page({
     });
   },
 
-  //获取返回顶部出现的条件，以及控制其显示状态
+  // 简单页面滚动偏移，控制是否出现返回顶部
   scrollTopFun: function (e) {
-    if (e.detail.scrollTop > 300) {//触发gotop的显示条件 
+    if (e.detail.scrollTop > 300) {
       this.setData({
         'scrollTop.goTop_show': true
       });

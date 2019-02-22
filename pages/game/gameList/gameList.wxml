@@ -5,41 +5,43 @@
   <view class='tab  {{currentData == 2 ? "tabBorer" : ""}}'  data-current = "2" bindtap='checkCurrent'>端游游戏</view>
 </view>
 <swiper class="swiper" current="{{currentTab}}" duration="300" bindchange="bindChange">
-  <swiper-item wx:for="{{[0,1,2]}}" wx:key="typeKey">
-    <scroll-view scroll-y="true" style="height:1100rpx" scroll-top="{{scrollTop.scroll_top}}" bindscroll="scrollTopFun">
-      <view class="gameList">
-        <block wx:for="{{gameList}}" wx:for-item="gameItem" wx:for-index="gameIndex" wx:key='gameKey'>
-          <view class="game" catchtap="gameUrl">
-            <view class="game-image">
-              <image class="game-image-pic" src="{{gameItem.pic}}">
-              </image>
-            </view>
+  <block wx:for="{{[0,1,2]}}" wx:key="typeKey">
+    <swiper-item>
+      <scroll-view scroll-y="true" style="height:1100rpx" scroll-top="{{scrollTop.scroll_top}}" bindscroll="scrollTopFun">
+        <view class="gameList">
+          <block wx:for="{{gameList}}" wx:for-item="gameItem" wx:for-index="gameIndex" wx:key='gameKey'>
+            <view class="game" catchtap="gameUrl">
+              <view class="game-image">
+                <image class="game-image-pic" src="{{gameItem.pic}}">
+                </image>
+              </view>
 
-            <view class="game-info">
-              <view class="game-info-title"><text class="game-image-rank-text">NO.{{gameIndex + 1}}</text> {{gameItem.title}}</view>
-              <view class='game-type-view'>
-                <block wx:for="{{gameItem.types}}" wx:for-item="gameType" wx:key='typeKey'>
-                  <text class="game-type">{{gameType}}  </text>
-                </block>
-              </view>
-              <view class="game-score-price">
-                <view class="game-score"><text class='field'>评分：</text>{{gameItem.score}}分</view>
-                <view class="game-price" wx:if="{{gameItem.price.length > 0}}"><text class='field'>价格：</text>{{gameItem.price}}</view>
-              </view>
-              <view class="game-size-date">
-                <view class="game-size" wx:if="{{gameItem.size.length > 0}}"><text class='field'>大小：</text>{{gameItem.size}}</view>
-                <view class="game-date" wx:if="{{gameItem.date.length > 0}}"><text class='field'>时间：</text>{{gameItem.date}}</view>
+              <view class="game-info">
+                <view class="game-info-title"><text class="game-image-rank-text">NO.{{gameIndex + 1}}</text> {{gameItem.title}}</view>
+                <view class='game-type-view'>
+                  <block wx:for="{{gameItem.types}}" wx:for-item="gameType" wx:key='typeKey'>
+                    <text class="game-type">{{gameType}}  </text>
+                  </block>
+                </view>
+                <view class="game-score-price">
+                  <view class="game-score"><text class='field'>评分：</text>{{gameItem.score}}分</view>
+                  <view class="game-price" wx:if="{{gameItem.price.length > 0}}"><text class='field'>价格：</text>{{gameItem.price}}</view>
+                </view>
+                <view class="game-size-date">
+                  <view class="game-size" wx:if="{{gameItem.size.length > 0}}"><text class='field'>大小：</text>{{gameItem.size}}</view>
+                  <view class="game-date" wx:if="{{gameItem.date.length > 0}}"><text class='field'>时间：</text>{{gameItem.date}}</view>
+                </view>
               </view>
             </view>
-          </view>
-          <view class="gameDesc">
-            <text>"{{gameItem.desc}}"</text>
-          </view>
-          <view class="game-line"></view>
-        </block>
-      </view>
-    </scroll-view>
+            <view class="gameDesc">
+              <text>"{{gameItem.desc}}"</text>
+            </view>
+            <view class="game-line"></view>
+          </block>
+        </view>
+      </scroll-view>
 
-    <view class='top' catchtap='returnTop' wx:if="{{scrollTop.goTop_show}}">返回顶部</view>
-  </swiper-item>
+      <view class='top' catchtap='returnTop' wx:if="{{scrollTop.goTop_show}}">返回顶部</view>
+    </swiper-item>
+  </block>
 </swiper>

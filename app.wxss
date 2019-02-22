@@ -1,4 +1,6 @@
 /**app.wxss**/
+@import './common/style/font-awesome.min.wxss';
+
 .container {
   height: 100%;
   display: flex;
