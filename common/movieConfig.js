@@ -2,14 +2,13 @@
 备注
 count: 每次请求数量
 movieRankDate: 电影排行榜页面数据
-华语Top排行榜：https://api.jackielee.cn/wxrank/movie/chinaTopMovie?start=0&limit=10
-华语票房排行榜：https://api.jackielee.cn/wxrank/movie/chinaTicketTopMovie?start=0&limit=10
-世界票房排行榜：https://api.jackielee.cn/wxrank/movie/worldTicketTopMovie?start=0&limit=10
-漫威电影推荐榜：https://api.jackielee.cn/wxrank/movie/dCMovie?start=0&limit=10
-豆瓣电影top250：https://api.jackielee.cn/wxrank/movie/top250?start=0&limit=10
+华语Top排行榜：https://jackielee.cn/wxrank/movie/chinaTopMovie?start=0&limit=10
+华语票房排行榜：https://jackielee.cn/wxrank/movie/chinaTicketTopMovie?start=0&limit=10
+世界票房排行榜：https://jackielee.cn/wxrank/movie/worldTicketTopMovie?start=0&limit=10
+漫威电影推荐榜：https://jackielee.cn/wxrank/movie/dCMovie?start=0&limit=10
+豆瓣电影top250：https://jackielee.cn/wxrank/movie/top250?start=0&limit=10
 豆瓣电影搜索：https://douban.uieee.com/v2/movie/search?q=keyword
 豆瓣详情：https://douban.uieee.com/v2/movie/subject/26266893
-https://api.douban.com/v2/movie/subject/26266893?apikey=0b2bdeda43b5688921839c8ecb20399b
 */
 
 export const count = 10;

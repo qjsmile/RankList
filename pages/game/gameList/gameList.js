@@ -1,79 +1,176 @@
 // pages/game/gameList/gameList.js
-import { iosGameList } from '../../../common/iosGame'
-import { andGameList } from '../../../common/andGame'
-import { onlineGameList } from '../../../common/onlineGame'
-
-const alldata = [iosGameList, andGameList, onlineGameList]
 Page({
   data: {
-    gameList: iosGameList,
-    currentData : 0,
-    scrollTop: {
-      scroll_top: 0,
-      goTop_show: false
-    }
+    iosPageData: {
+      gameList: [],
+      hasMore: true,
+      scrollTop: 0,
+      showGoTop: false,
+    },
+    androidPageData: {
+      gameList: [],
+      hasMore: true,
+      scrollTop: 0,
+      showGoTop: false,
+    },
+    pcPageData: {
+      gameList: [],
+      hasMore: true,
+      scrollTop: 0,
+      showGoTop: false,
+    },
+    currentIndex : 0,
   },
 
   onLoad: function (options) {
-
+    this.fetchData(this.data.currentIndex)
   },
 
-  //获取当前滑块的index
-  bindChange:function(e){
+  fetchData: function(currentIndex) {
     const that  = this;
-    that.setData({
-      currentData: e.detail.current,
-      gameList: alldata[e.detail.current]
-    });
-  },
-  
-  //点击切换，滑块index赋值
-  checkCurrent:function(e){
-    const that = this;
-
-    if (that.data.currentData === e.target.dataset.current){
-        return false;
-    } else {
-      that.setData({
-        currentData: e.target.dataset.current,
-        gameList: alldata[e.target.dataset.current],
-        'scrollTop.scroll_top': 0
-      });
+    const { iosPageData, androidPageData, pcPageData } = that.data
+    const db = wx.cloud.database()
+    if ( currentIndex === 0 && iosPageData.hasMore) {
+      db.collection('iosGames').skip(iosPageData.gameList.length)
+      .get()
+      .then(res => {
+        console.log(res.data)
+        if (res.data.length > 0) {
+          that.setData({
+            'iosPageData.gameList': that.data.iosPageData.gameList.concat(res.data),
+          });
+        } else {
+          that.setData({
+            'iosPageData.hasMore': false
+          })
+        }
+      })
+    } else if (that.data.currentIndex === 1 && androidPageData.hasMore) {
+      db.collection('androidGames').skip(androidPageData.gameList.length)
+      .get()
+      .then(res => {
+        if (res.data.length > 0) {
+          that.setData({
+            'androidPageData.gameList': androidPageData.gameList.concat(res.data),
+          });
+        } else {
+          that.setData({
+            'androidPageData.hasMore': false
+          })
+        }
+      })
+    } else if (pcPageData.hasMore){
+      db.collection('pcGames').skip(pcPageData.gameList.length)
+      .get()
+      .then(res => {
+        if (res.data.length > 0) {
+          that.setData({
+            'pcPageData.gameList': pcPageData.gameList.concat(res.data),
+          });
+        } else {
+          that.setData({
+            'pcPageData.hasMore': false
+          })
+        }
+      })
     }
   },
 
-  //分享文案
-  onShareAppMessage: function () {
-    return {
-      title: '周末无聊？进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
-      desc: '周末无聊？进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
-      path: 'pages/home/home'
+  // Swiper页发生变化
+  onSwiperChange:function(e) {
+    const that  = this;
+    const { current } = e.detail;
+    const { androidPageData, pcPageData } = that.data
+    that.setData({
+      currentIndex: current,
+    });
+    if (current == 1 && androidPageData.gameList.length <= 0) {
+      this.fetchData(current)
+    }
+    if (current == 2 && pcPageData.gameList.length <= 0) {
+      this.fetchData(current)
+    }
+  },
+  
+  //点击切换，滑块index赋值
+  onChangeSwiper: function(e){
+    const that = this;
+    const current = e.target.dataset.current
+    const { currentIndex, androidPageData, pcPageData } = that.data
+    if (currentIndex != current) {
+      that.setData({
+        currentIndex: current,
+      });
+      if (current == 1 && androidPageData.gameList.length <= 0) {
+        this.fetchData(current)
+      }
+      if (current == 2 && pcPageData.gameList.length <= 0) {
+        this.fetchData(current)
+      }
+    }
+  },
+
+  // Scroll底部触发事件
+  onScrollToLoadMore: function() {
+    this.fetchData(this.data.currentIndex)
+  },
+  // 简单页面滚动偏移，控制是否出现返回顶部
+  onIOSShowGoTop: function (e) {
+    if (e.detail.scrollTop > 300) {
+      this.setData({
+        'iosPageData.showGoTop': true
+      });
+    } else {
+      this.setData({
+        'iosPageData.showGoTop': false
+      });
+    }
+  },
+  onANDShowGoTop: function (e) {
+    if (e.detail.scrollTop > 300) {
+      this.setData({
+        'androidPageData.showGoTop': true
+      });
+    } else {
+      this.setData({
+        'androidPageData.showGoTop': false
+      });
+    }
+  },
+  onPCShowGoTop: function (e) {
+    if (e.detail.scrollTop > 300) {
+      this.setData({
+        'pcPageData.showGoTop': true
+      });
+    } else {
+      this.setData({
+        'pcPageData.showGoTop': false
+      });
     }
   },
 
   // 返回顶部
-  returnTop: function (e) {
-    var scroll_top = this.data.scrollTop.scroll_top;
-    if (scroll_top == 1) {
-      scroll_top = 0;
+  onReturnTop: function (e) {
+    if (this.data.currentIndex === 0) {
+      this.setData({
+        'iosPageData.scrollTop': 0
+      });
+    } else if(this.data.currentIndex === 1) {
+      this.setData({
+        'androidPageData.scrollTop': 0
+      });
     } else {
-      scroll_top = 1;
+      this.setData({
+        'pcPageData.scrollTop': 0
+      });
     }
-    this.setData({
-      'scrollTop.scroll_top': scroll_top
-    });
   },
-
-  // 简单页面滚动偏移，控制是否出现返回顶部
-  scrollTopFun: function (e) {
-    if (e.detail.scrollTop > 300) {
-      this.setData({
-        'scrollTop.goTop_show': true
-      });
-    } else {
-      this.setData({
-        'scrollTop.goTop_show': false
-      });
+  //分享文案
+  onShareAppMessage: function () {
+    return {
+      title: '进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
+      desc: '进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
+      path: 'pages/home/home'
     }
   },
 })

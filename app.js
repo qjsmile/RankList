@@ -1,6 +1,13 @@
 //app.js
+
+
 App({
   onLaunch: function () {
+    wx.cloud.init({
+      env:'wx-rank',
+      traceUser: true
+    })
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
