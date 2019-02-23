@@ -1,2 +1,112 @@
 <!--pages/movie/movieDetail.wxml-->
-<text>pages/movie/movieDetail.wxml</text>
+<import src='/template/rating/rating'/>
+<import src='/template/casts/casts'/>
+<wxs src='../../../util.wxs' module='WxUtil' />
+
+
+<view class='page-detail'>
+  <view class='big-bg' style='background-image:url({{details.images.large}});'>
+    <view></view>
+  </view>
+
+  <scroll-view class='scroll' scroll-y enable-back-to-top>
+    <!-- 基础信息 -->
+    <view class='bg-img' wx:if='{{details.images}}' style='height:{{bgImgHeight}}px;'>
+      <view class='brief'>
+        <image class='img-mv' src='{{details.images.large}}' mode='aspectFill' />
+        <view class='.brief-info'>
+          <text wx:if='{{details.title}}' class='title'>{{details.title}}</text>
+          <text wx:if='{{details.original_title && details.original_title !== details.title}}' class='title'>{{details.original_title}}</text>
+          <view class='rating'>
+            <text wx:if='{{details.rating}}'>{{details.rating.average}}</text>
+            <view>
+              <template is='rating' data='{{rating:details.rating.average, max:10}}' />
+              <text wx:if='{{details.ratings_count}}'>{{details.ratings_count}}人评价</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 概述 -->
+    <view class='brief-time'>
+      <text>{{details.durations[0]}} {{WxUtil.arr2str(details.genres," / ")}}
+      {{pubdates}} {{WxUtil.arr2str(details.countries, " / ")}}
+      {{details.directors[0].name}}(导演) / {{casts}}</text>
+    </view>
+    <!-- 剧情简介 -->
+    <view class='brief-summary'>
+      <text class='subtitle'>剧情简介\n</text>
+      <text class='{{isFold && "summary"}}'>{{details.summary}}</text>
+      <view class='fold {{!isFold && "active"}}' bindtap='foldToggle'>{{isFold?"展开":"收起"}}</view>
+    </view>
+    <!-- 影人 -->
+    <view class='casts'>
+      <text class='subtitle'>导演 / 演员</text>
+      <scroll-view scroll-x>
+        <block wx:for='{{details.directors}}' wx:key='id'>
+          <template is='item-casts' data='{{item,isDirec:true}}' />
+        </block>
+        <block wx:for='{{details.casts}}' wx:key='id'>
+          <template is='item-casts' data='{{item,isDirec:false}}' />
+        </block>
+      </scroll-view>
+    </view>
+    <!-- 预告及剧照 -->
+    <view class='photos'>
+      <text class='subtitle'>预告片 / 剧照</text>
+      <scroll-view scroll-x>
+        <block wx:if='{{details.trailers&&details.trailers[0]}}'>
+          <view class='trailer' data-currurl='{{details.trailers[0].resource_url}}' data-trailers='{{details.trailers}}' catchtap="onPlayMovieTrailers">
+            <image class='image' src='{{details.trailers[0].medium}}' />
+            <view class='front'>
+              <view class='icon'>
+                <image src='/images/white_play_icon.png' mode='widthFix' />
+              </view>
+            </view>
+         </view>
+        </block>
+
+        <block wx:for='{{details.photos}}' wx:key='id'>
+          <view class='trailer' data-img='{{item.image}}' bindtap='onPreviewImage'>
+            <image class='image' src='{{item.image}}' />
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+    <!-- 播放源 -->
+    <view class='page-source' wx:if='{{details.videos.length>0}}'>
+      <text class='subtitle'>{{details.videos.length}}个播放源,点击复制视频链接</text>
+      <block wx:for='{{details.videos}}' wx:key='source.literal'>
+        <view class='sources-item' bindtap='onCopyUrl' data-url='{{item.sample_link}}'>
+          <view class='item-container'>
+            <view>
+              <image class='icon' src='{{item.source.pic}}' mode='widthFix'/>
+              <text>{{item.source.name}}</text>
+            </view>
+            <view>
+              <text>{{item.need_pay?"收费":"免费"}}</text>
+              <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <!-- 短评 -->
+    <view class='comments'>
+      <text class='subtitle'>影片短评</text>
+      <block wx:for='{{comments}}' wx:key='id'>
+        <view class='item-comment'>
+          <image class='user-header' src='{{item.author.avatar}}'></image>
+          <view class='comment-right'>
+            <view class='name-rating'>
+              <text class='username'>{{item.author.name}}</text>
+              <template is='rating' data='{{rating:item.rating.value,max:5}}' />
+            </view>
+            <text class='date'>{{item.created_at}}</text>
+            <text>{{item.content}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+</view>

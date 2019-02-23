@@ -1,16 +1,12 @@
 // pages/movie/movieList.js
 
-import { fetchMovies } from '../../../common/movieFetch'
-import { count, movieRankDate } from '../../../common/movieConfig'
-import { chineseMovieList } from '../../../common/chineseMovie'
-import { wordTicketMovieList } from '../../../common/wordTicketMovie'
-import { manweiMovieList } from '../../../common/manweiMovie'
+import { count, movieRankDate, fetchMoviesByJackieLee } from '../../../common/movieFetch'
+import { ShareDesc } from '../../../app'
 
 Page({
   data: {
     movieList: [],
     hasMore: true,
-    showLoading: true,
     start: 0,
     typeId: 0,
   },
@@ -30,36 +26,7 @@ Page({
 
   fetchMovies: function() {
     var that = this
-    switch (that.data.typeId) {
-      case 0:
-      case 1: // 新片榜
-      case 2:
-        fetchMovies.call(that, movieRankDate[that.data.typeId].api, that.data.start, count)
-        break
-      case 3:
-        that.setData({
-          movieList: wordTicketMovieList,
-          hasMore: false,
-          showLoading: false,
-        })
-        break
-      case 4:
-        that.setData({
-          movieList: chineseMovieList,
-          hasMore: false,
-          showLoading: false,
-        })
-        break
-      case 5:
-        that.setData({
-          movieList: manweiMovieList,
-          hasMore: false,
-          showLoading: false,
-        })
-        break;
-      default:
-      // do nothing
-    }
+    fetchMoviesByJackieLee.call(that, movieRankDate[that.data.typeId].api, that.data.start, count)
   },
 
  // 上拉刷新 
@@ -68,7 +35,6 @@ Page({
 		that.setData({
       movieList: [],
 			hasMore: true,
-			showLoading: true,
 			start: 0
 		})
     that.fetchMovies()
@@ -77,20 +43,21 @@ Page({
   // 滑到底部加载更多
   onReachBottom: function() {
 		var that = this
-		if (!that.data.showLoading) {
+		if (that.data.hasMore) {
       that.fetchMovies()
 		}
   },
   
   viewMovieDetailByID: function (e) {
-    //
+    var data = e.currentTarget.dataset
+    const id = Number(data.id)
+    let url = "../../movie/movieDetail/movieDetail?id=" + id
+    wx.navigateTo({
+      url: url
+    })
   },
 
   onShareAppMessage: function () {
-    return {
-      title: '周末无聊？进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
-      desc: '周末无聊？进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
-      path: 'pages/home/home'
-    }
+    return ShareDesc
   }
 })

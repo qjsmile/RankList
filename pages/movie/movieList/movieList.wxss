@@ -1,2 +1,2 @@
 /* pages/movie/movieList.wxss */
-@import "../../../template/movieList/movieListTemplate.wxss";
+@import "/template/movieList/movieListTemplate.wxss";

@@ -1,4 +1,6 @@
 /* pages/game/gameList/gameList.wxss */
+@import "/template/gameList/gameListTemplage.wxss";
+
 .topTabSwiper {
   border-top: 1px solid #ccc; 
   border-bottom: 1px solid #ccc; 
@@ -10,6 +12,7 @@
   text-align: center;
   padding: 10rpx 0; 
   margin-bottom: 30rpx;
+  background-color: #e1e1e1e1;
 }
 .tabBorer{
   border-bottom: 1px solid #f00; 
@@ -20,103 +23,10 @@
   width: 100%;
   height: 1100rpx;
 }
-
-.gameList {
-  display: flex;
-  flex-direction: column;
-  padding-left: 20rpx;
-  padding-right: 20rpx;
+.scroll {
+  width: 100%;
+  height: 100%;
 }
-
-.gameDesc {
-  font-size: 22rpx;
-  margin-top: 10rpx;
-  color: rgb(66, 61, 61);
-}
-.game-line {
-  height: 2rpx;
-  margin-top: 20rpx;
-  margin-bottom: 20rpx;
-  background-color:#e1e1e1; 
-}
-.game {
-  display: flex;
-  flex-direction: row;
-}
-.game-image {
-  width: 130rpx;
-}
-.game-image-pic {
-  width: 120rpx;
-  height: 160rpx;
-  box-shadow: 10rpx 10rpx 30rpx rgba(0, 0, 0, .3);
-}
-
-.game-image-rank {
-  /* margin-top: -220rpx; */
-}
-
-.game-image-rank-text {
-  font-size: 24rpx;
-  padding-right: 10rpx;
-  color: rgb(129, 119, 119);
-}
-
-.game-info {
-  margin-left: 20rpx;
-  flex-direction: column;
-}
-.game-info-title {
-  font-size: 30rpx;
-  color: rgb(37, 129, 235);
-  font-weight: bold;
-}
-.game-score {
-  font-size: 22rpx;
-  color: #666;
-  margin-top: 5rpx;
-  margin-right: 20rpx;
-}
-
-.game-price {
-  font-size: 22rpx;
-  color: #666;
-  margin-top: 5rpx;
-}
-
-.game-score-price {
-  flex-direction:row;
-  display: flex;
-}
-.game-type-view {
-  display:flex;
-  flex-direction: row;
-  margin-bottom: 10rpx;
-}
-.game-type {
-  font-size: 20rpx;
-  color: rgb(236, 147, 31);
-  /* background-color: rgba(202, 74, 241, 0.199); */
-  border: solid 1rpx rgba(245, 210, 11, 0.596);
-  margin-right: 10rpx;
-  padding-left: 5rpx;
-  padding-right: 5rpx;
-  padding-bottom: 1rpx;
-  padding-top: 1rpx;
-}
-
-.game-size-date{
-  flex-direction:row;
-  display: flex;
-  color: #666;
-}
-.game-size{
-  font-size: 22rpx;
-}
-.game-date{
-  font-size: 22rpx;
-}
-
 .field {
   font-weight: bold;
 }

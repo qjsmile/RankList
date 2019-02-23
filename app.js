@@ -1,6 +1,17 @@
 //app.js
+export const ShareDesc = {
+  title: '进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
+  desc: '进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
+  path: '/home/home'
+}
+
 App({
   onLaunch: function () {
+    wx.cloud.init({
+      env:'wx-rank',
+      traceUser: true
+    })
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

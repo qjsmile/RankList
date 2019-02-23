@@ -1,0 +1,22 @@
+/*  */
+.com-rating {
+  display: inline-block;
+  font-size: 1.2em;
+  letter-spacing: .3em;
+}
+.com-rating .rating-on,
+.com-rating .rating-off {
+  display: inline-block;
+}
+.com-rating .rating-on {
+  color: #f57207f5;
+  position: absolute;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+.com-rating .rating-off {
+  color: #DBDBDB;
+  padding: 0;
+  margin: 0;
+}

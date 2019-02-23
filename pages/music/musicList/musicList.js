@@ -1,12 +1,15 @@
 // pages/music/musicList/musicList.js
-import { douyinMusicList } from '../../../common/douyinMusic'
-import { hotMusic } from '../../../common/hotMusic'
-import { originerMusic } from '../../../common/originerMusic'
-import { newMusic } from '../../../common/newMusic'
-import { musicRankDate } from '../../../common/musicConfig'
+
+import { fetchMusicsByJackieLee } from '../../../common/musicFetch'
+import { count, musicRankDate } from '../../../common/musicConfig'
+import { ShareDesc } from '../../../app'
+
 Page({
   data: {
     musicList: [],
+    hasMore: true,
+    showLoading: true,
+    start: 0,
     typeId: 0,
   },
 
@@ -19,28 +22,36 @@ Page({
     wx.setNavigationBarTitle({
       title: musicRankDate[that.data.typeId].type
     })
-    
-    let tempMusicList = []
-    if (that.data.typeId === 0) {
-      tempMusicList = originerMusic
-    } else if (that.data.typeId === 1) {
-      tempMusicList = douyinMusicList
-    } else if (that.data.typeId === 2) {
-      tempMusicList = hotMusic
-    } else {
-      tempMusicList = newMusic
-    }
 
-    this.setData({
-      musicList: tempMusicList,
+    that.fetchMusics()
+  },
+
+  fetchMusics: function() {
+    var that = this
+    fetchMusicsByJackieLee.call(that, musicRankDate[that.data.typeId].api, that.data.start, count)
+  },
+
+  // 上拉刷新 
+  onPullDownRefresh: function() {
+    var that = this
+    that.setData({
+      movieList: [],
+      hasMore: true,
+      showLoading: true,
+      start: 0
     })
+    that.fetchMusics()
+  },
+
+  // 滑到底部加载更多
+  onReachBottom: function() {
+    var that = this
+    if (that.data.hasMore) {
+      that.fetchMusics()
+    }
   },
 
   onShareAppMessage: function () {
-    return {
-      title: '周末无聊？进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
-      desc: '周末无聊？进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
-      path: 'pages/home/home'
-    }
+    return ShareDesc
   }
 })

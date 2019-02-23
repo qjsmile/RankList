@@ -1,16 +1,41 @@
 // pages/book/bookList/bookList.js
-import { bookList } from "../../../common/bookConfig"
+import { fetchBooksByJackieLee, count, bookTop250Url } from "../../../common/bookFetch"
+import { ShareDesc } from '../../../app'
 
 Page({
   data: {
-    bookList: []
+    bookList: [],
+    hasMore: true,
+    start: 0,
   },
 
   onLoad: function (options) {
     var that = this
+    that.fetchBooks()
+  },
+
+  fetchBooks: function() {
+    var that = this
+    fetchBooksByJackieLee.call(that, bookTop250Url, that.data.start, count)
+  },
+
+  // 上拉刷新 
+  onPullDownRefresh: function() {
+    var that = this
     that.setData({
-      bookList: (bookList)
+      movieList: [],
+      hasMore: true,
+      start: 0
     })
+    that.fetchBooks()
+  },
+
+  // 滑到底部加载更多
+  onReachBottom: function() {
+    var that = this
+    if (that.data.hasMore) {
+      that.fetchBooks()
+    }
   },
 
   bookUrl: function () {
@@ -21,11 +46,6 @@ Page({
   },
 
   onShareAppMessage: function () {
-    return {
-      title: '周末无聊？进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
-      desc: '周末无聊？进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
-      path: 'pages/home/home'
-    }
+    return ShareDesc
   }
-
 })

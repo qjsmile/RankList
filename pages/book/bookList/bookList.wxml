@@ -3,7 +3,7 @@
   <block wx:for="{{bookList}}" wx:for-item="bookItem" wx:for-index="bookIndex" wx:key="bookKey">
     <view class="book" catchtap="bookUrl">
       <view class="book-image">
-        <image class="book-image-pic" src="{{bookItem.bookImg}}">
+        <image class="book-image-pic" src="{{bookItem.pic}}">
         </image>
         <view class='book-image-rank'>
           <text class="book-image-rank-text">NO.{{bookIndex + 1}}</text>
@@ -14,7 +14,7 @@
         <view class="book-common-text">{{bookItem.author}}  {{bookItem.translator}}</view>
         <view class="book-common-text">{{bookItem.press}} {{bookItem.date}}</view>
         <view class="book-common-text">{{bookItem.score}}分 {{bookItem.scoreNum}}</view>
-        <view class="book-common-text">"{{bookItem.quote}}"</view>
+        <view class="book-common-text">"{{bookItem.desc}}"</view>
       </view>
     </view>
     <view class="book-line"></view>
