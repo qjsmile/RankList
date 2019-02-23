@@ -5,7 +5,7 @@
       <view class="movie" data-id="{{movieItem.id}}" catchtap="viewMovieDetailByID">
         <view class="movie-image">
           <image class="movie-image-pic" src="{{movieItem.pic}}"></image>
-          <view class='movie-image-rank'>
+          <view wx:if="{{hasRank}}" class='movie-image-rank'>
             <text class="movie-image-rank-text">NO.{{movieIndex + 1}}</text>
           </view>
         </view>

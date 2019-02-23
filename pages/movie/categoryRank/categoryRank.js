@@ -1,6 +1,6 @@
 
 // pages/movie/categoryRank/categoryRank.js
-import { movieRankDate } from '../../../common/movieConfig'
+import { movieRankDate } from '../../../common/movieFetch'
 
 Page({
   data: {

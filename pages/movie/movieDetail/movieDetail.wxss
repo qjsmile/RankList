@@ -79,9 +79,6 @@
   display: flex;
   flex-direction: column;
 }
-.com-rating .rating-on {
-  color: #F4D02F;
-}
 
 image {
   width: 100%;

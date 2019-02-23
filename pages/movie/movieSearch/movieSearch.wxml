@@ -26,40 +26,6 @@
   </view>
 
   <view class='content'>
-    <view class="movieList">
-      <block wx:for="{{movieList}}" wx:for-item="movieItem" wx:for-index="movieIndex" wx:key="movieKey">
-        <navigator url="/pages/movie/movieDetail/movieDetail?title={{movieItem.title}}&id=26942674">
-          <view class="movie">
-            <view class="movie-image">
-              <image class="movie-image-pic" src="{{movieItem.pic}}"></image>
-            </view>
-            <view class="movie-info">
-              <view class="movie-info-title">{{movieItem.title}}</view>
-              <view class="movie-common-text"><text class = "itemName">导演</text>: {{movieItem.director}}</view>
-              <view class="movie-common-text"><text class = "itemName">演员</text>: {{movieItem.actors}}</view>
-              <view class="movie-common-text"><text class = "itemName">评分</text>:
-                <block wx:if="{{movieItem.score == 0}}">
-                  暂无评分
-                </block>
-                <block wx:else>
-                  {{movieItem.score}}
-                </block>
-              </view>
-              <view class="movie-common-text">
-                <block wx:if="{{movieItem.date && movieItem.date.length > 0}}">
-                  <text class = "itemName">上映时间</text>: {{movieItem.date}}
-                </block>
-                <block wx:else>
-                </block>
-              </view>
-            </view>
-          </view>
-        </navigator>
-        <view class="movie-line"></view>
-      </block>
-      <block wx:if="{{!hasMore}}">
-        <view class="loading-tip">没有更多内容了</view>
-      </block>
-    </view>
+    <template is="movieListTemplate" data="{{movieList: movieList, hasMore: hasMore, hasRank: false}}"/>
   </view>
 </view>

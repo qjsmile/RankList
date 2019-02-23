@@ -1,4 +1,5 @@
 // pages/movie/movieDetail/movieDetail.js
+import { movieDetailUrl, movieCommentsUrl, getComments, getDetails } from '../../../common/movieFetch'
 
 Page({
   data: {
@@ -28,68 +29,17 @@ Page({
     that.setData({
       id: Number(options.id)
     })
-    this.getDetails(options.id);
-    this.getComments(options.id);
-  },
-  
-  fetchData(path, params) {
-    return new Promise((resolve, reject) => {
-      wx.showLoading({
-        title: 'loading...',
-      });
-      wx.request({
-        url: path,
-        data: {
-          ...params
-        },
-        method: 'GET', 
-        header: {
-          "Content-Type": "application/json,application/json"
-        },
-        success: res => {
-          resolve(res.data)
-        },
-        fail: err => {
-          reject(err)
-        },
-        complete: res => {
-          wx.hideLoading()
-        }
+    if (options.id > 0) {
+      getDetails.call(that, movieDetailUrl, options.id)
+      getComments.call(that, movieCommentsUrl, options.id, 0, 20)
+    } else {
+      wx.showModal({
+        content: `抱歉，😞暂无详情~`,
+        showCancel: false
       })
-    })
+    }
   },
 
-  // 获取影视详情
-  getDetails: function(id) {
-    let that = this;
-    this.fetchData(`https://douban.uieee.com/v2/movie/subject/${id}`).then(res => {
-      const details = res;
-      let castsName = [];
-      for (let item of details.casts) {
-        castsName.push(item.name);
-      }
-
-      that.setData({
-        details: details,
-        pubdates: "上映时间" + details.pubdates.join('/'),
-        casts: castsName.join(' / '),
-        comments_count: details.comments_count,
-        loaded: true,
-      });
-    })
-  },
-
-  /**
-   * 获取影视短评
-   */
-  getComments: function(id) {
-    const that = this;
-    this.fetchData(`https://douban.uieee.com/v2/movie/subject/${id}/comments`).then(res => {
-      that.setData({
-        comments: res.comments
-      })
-    })
-  },
   // 折叠开关
   foldToggle() {
     const { isFold } = this.data;

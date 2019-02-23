@@ -9,7 +9,7 @@
   display: inline-block;
 }
 .com-rating .rating-on {
-  color: black;
+  color: #f57207f5;
   position: absolute;
   overflow: hidden;
   padding: 0;

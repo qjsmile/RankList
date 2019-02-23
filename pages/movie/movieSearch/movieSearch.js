@@ -1,7 +1,6 @@
 //pages/movie/movieSearch/movieSearch.js
 
-import { searchMovies } from '../../../common/movieFetch'
-import { count, movieSearchUrl } from '../../../common/movieConfig'
+import { count, movieSearchUrl, searchMovies } from '../../../common/movieFetch'
 
 Page({
   data: {

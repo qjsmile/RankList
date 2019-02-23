@@ -1,7 +1,6 @@
 // pages/movie/movieList.js
 
-import { fetchMoviesByDouBan, fetchMoviesByJackieLee } from '../../../common/movieFetch'
-import { count, movieRankDate } from '../../../common/movieConfig'
+import { count, movieRankDate, fetchMoviesByJackieLee } from '../../../common/movieFetch'
 
 Page({
   data: {
@@ -26,20 +25,7 @@ Page({
 
   fetchMovies: function() {
     var that = this
-    switch (that.data.typeId) {
-      case 0:
-      case 1: // 新片榜
-      case 2:
-        fetchMoviesByDouBan.call(that, movieRankDate[that.data.typeId].api, that.data.start, count)
-        break
-      case 3:
-      case 4:
-      case 5:
-        fetchMoviesByJackieLee.call(that, movieRankDate[that.data.typeId].api, that.data.start, count)
-        break;
-      default:
-      // do nothing
-    }
+    fetchMoviesByJackieLee.call(that, movieRankDate[that.data.typeId].api, that.data.start, count)
   },
 
  // 上拉刷新 
