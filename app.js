@@ -2,7 +2,7 @@
 export const ShareDesc = {
   title: '进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
   desc: '进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
-  path: '/home/home'
+  path: 'pages/home/home'
 }
 
 App({
