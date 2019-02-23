@@ -1,5 +1,6 @@
 // pages/movie/movieDetail/movieDetail.js
 import { movieDetailUrl, movieCommentsUrl, getComments, getDetails } from '../../../common/movieFetch'
+import { ShareDesc } from '../../../app'
 
 Page({
   data: {
@@ -23,7 +24,7 @@ Page({
     })
 
     wx.setNavigationBarTitle({
-      title: '影片详情',
+      title: options.title || '影片详情',
     })
 
     that.setData({
@@ -34,7 +35,7 @@ Page({
       getComments.call(that, movieCommentsUrl, options.id, 0, 20)
     } else {
       wx.showModal({
-        content: `抱歉，😞暂无详情~`,
+        content: `很抱歉，暂无详情~`,
         showCancel: false
       })
     }
@@ -80,5 +81,8 @@ Page({
         })
       }
     })
+  },
+  onShareAppMessage: function () {
+    return ShareDesc
   }
 })

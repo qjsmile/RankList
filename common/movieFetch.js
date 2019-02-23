@@ -88,14 +88,27 @@ function fetchMoviesByJackieLee(url, start, count) {
 }
 
 // 电影搜索
-function searchMovies(url, searchWords, start, count) {
+function searchMovies(isClear, url, searchWords, start, count) {
   var that = this
   if (that.data.hasMore) {
-    fetchData(url, {keyWord: searchWords, start: start, limit: count}).then(res => {
+    fetchData(url, {keyWord: searchWords, start: start, limit: count, type: 0}).then(res => {
       const fetchData = res.data
-        if (!fetchData || fetchData.length === 0) {
+      if (!fetchData || fetchData.length === 0) {
+        that.setData({
+          hasMore: false,
+        })
+        if (that.data.movieList.length <= 0) {
+          wx.showModal({
+            content: `很抱歉，未搜到到相关影片~`,
+            showCancel: false
+          })
+        }
+      } else {
+        if(isClear) {
           that.setData({
-            hasMore: false,
+            movieList: fetchData,
+            start: fetchData.length,
+            hasMore: true
           })
         } else {
           that.setData({
@@ -103,7 +116,8 @@ function searchMovies(url, searchWords, start, count) {
             start: that.data.start + fetchData.length,
           })
         }
-        wx.stopPullDownRefresh()
+      }
+      wx.stopPullDownRefresh()
     })
   }
 }

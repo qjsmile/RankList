@@ -1,6 +1,7 @@
 //pages/movie/movieSearch/movieSearch.js
 
 import { count, movieSearchUrl, searchMovies } from '../../../common/movieFetch'
+import { ShareDesc } from '../../../app'
 
 Page({
   data: {
@@ -14,22 +15,22 @@ Page({
   onTapSearchBtn() {
     var that = this
     if (that.data.searchWords != "") {
-      that.searchMoviesByWords()
+      that.searchMoviesByWords(true)
     } else {
       wx.navigateBack()
     }
   },
 
-  searchMoviesByWords() {
+  searchMoviesByWords(isClear) {
     var that = this
-    searchMovies.call(that, movieSearchUrl, that.data.searchWords, that.data.start, count)
+    searchMovies.call(that, isClear, movieSearchUrl, that.data.searchWords, that.data.start, count)
   },
 
   // 滑到底部加载更多
   onReachBottom: function() {
     var that = this
 		if (that.data.hasMore) {
-      that.searchMoviesByWords()
+      that.searchMoviesByWords(false)
 		}
   },
 
@@ -56,4 +57,7 @@ Page({
       searchWords: words
     });
   },
+  onShareAppMessage: function () {
+    return ShareDesc
+  }
 })

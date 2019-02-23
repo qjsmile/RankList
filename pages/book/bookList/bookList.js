@@ -1,5 +1,6 @@
 // pages/book/bookList/bookList.js
 import { fetchBooksByJackieLee, count, bookTop250Url } from "../../../common/bookFetch"
+import { ShareDesc } from '../../../app'
 
 Page({
   data: {
@@ -45,10 +46,6 @@ Page({
   },
 
   onShareAppMessage: function () {
-    return {
-      title: '进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
-      desc: '进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
-      path: 'pages/home/home'
-    }
+    return ShareDesc
   }
 })

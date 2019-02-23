@@ -24,7 +24,6 @@
       <block wx:else>搜索</block>
     </view>
   </view>
-
   <view class='content'>
     <template is="movieListTemplate" data="{{movieList: movieList, hasMore: hasMore, hasRank: false}}"/>
   </view>

@@ -2,35 +2,37 @@
 <template name="movieListTemplate">
   <view class="movieList">
     <block wx:for="{{movieList}}" wx:for-item="movieItem" wx:for-index="movieIndex" wx:key="movieKey">
-      <view class="movie" data-id="{{movieItem.id}}" catchtap="viewMovieDetailByID">
-        <view class="movie-image">
-          <image class="movie-image-pic" src="{{movieItem.pic}}"></image>
-          <view wx:if="{{hasRank}}" class='movie-image-rank'>
-            <text class="movie-image-rank-text">NO.{{movieIndex + 1}}</text>
+      <navigator url="/pages/movie/movieDetail/movieDetail?title={{movieItem.title}}&id={{movieItem.id}}">
+        <view class="movie">
+          <view class="movie-image">
+            <image class="movie-image-pic" src="{{movieItem.pic}}"></image>
+            <view wx:if="{{hasRank}}" class='movie-image-rank'>
+              <text class="movie-image-rank-text">NO.{{movieIndex + 1}}</text>
+            </view>
+          </view>
+          <view class="movie-info">
+            <view class="movie-info-title">{{movieItem.title}}</view>
+            <view class="movie-common-text"><text class = "itemName">导演</text>: {{movieItem.director}}</view>
+            <view class="movie-common-text"><text class = "itemName">演员</text>: {{movieItem.actor}}</view>
+            <view class="movie-common-text"><text class = "itemName">评分</text>:
+              <block wx:if="{{movieItem.score == 0}}">
+                暂无评分
+              </block>
+              <block wx:else>
+                {{movieItem.score}}
+              </block>
+            </view>
+            <view class="movie-common-text">
+              <block wx:if="{{movieItem.date && movieItem.date.length > 0}}">
+                <text class = "itemName">上映时间</text>: {{movieItem.date}}
+              </block>
+              <block wx:else>
+              </block>
+            </view>
           </view>
         </view>
-        <view class="movie-info">
-          <view class="movie-info-title">{{movieItem.title}}</view>
-          <view class="movie-common-text"><text class = "itemName">导演</text>: {{movieItem.director}}</view>
-          <view class="movie-common-text"><text class = "itemName">演员</text>: {{movieItem.actors}}</view>
-          <view class="movie-common-text"><text class = "itemName">评分</text>:
-            <block wx:if="{{movieItem.score == 0}}">
-              暂无评分
-            </block>
-            <block wx:else>
-              {{movieItem.score}}
-            </block>
-          </view>
-          <view class="movie-common-text">
-            <block wx:if="{{movieItem.date && movieItem.date.length > 0}}">
-              <text class = "itemName">上映时间</text>: {{movieItem.date}}
-            </block>
-            <block wx:else>
-            </block>
-          </view>
-        </view>
-      </view>
-      <view class="movie-line"></view>
+        <view class="movie-line"></view>
+      </navigator>
     </block>
     <block wx:if="{{hasMore}}">
         <view class="loading-tip">拼命加载中…</view>

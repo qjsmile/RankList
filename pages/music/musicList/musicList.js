@@ -2,6 +2,7 @@
 
 import { fetchMusicsByJackieLee } from '../../../common/musicFetch'
 import { count, musicRankDate } from '../../../common/musicConfig'
+import { ShareDesc } from '../../../app'
 
 Page({
   data: {
@@ -51,10 +52,6 @@ Page({
   },
 
   onShareAppMessage: function () {
-    return {
-      title: '进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
-      desc: '进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
-      path: 'pages/home/home'
-    }
+    return ShareDesc
   }
 })

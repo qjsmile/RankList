@@ -26,24 +26,24 @@
 }
 
 .movie-image {
-  width: 300rpx;
-  height: 420rpx
+  width: 200rpx;
+  height: 280rpx
 }
 
 .movie-image-pic {
-  width: 300rpx;
-  height: 420rpx;
+  width: 200rpx;
+  height: 280rpx;
   box-shadow: 10rpx 10rpx 30rpx rgba(0, 0, 0, .2)
 }
 
 .movie-image-rank {
   width: 30rpx;
   height: 40rpx;
-  margin-top: -430rpx;
+  margin-top: -295rpx;
 }
 
 .movie-image-rank-text {
-  font-size: 40rpx;
+  font-size: 35rpx;
   background-color:rgba(0, 0, 0, .6);
   color: #FFF;
   padding-left: 15rpx;
@@ -58,16 +58,16 @@
 }
 
 .movie-info-title {
-  font-size: 45rpx;
+  font-size: 40rpx;
   color: rgb(0, 0, 0);
   font-weight: bold;
-  margin-bottom: 20rpx;
+  margin-bottom: 15rpx;
 }
 
 .movie-common-text {
   font-size: 30rpx;
-  padding: 5rpx 0rpx;
-  margin-bottom: 10rpx;
+  padding: 2rpx 0rpx;
+  margin-bottom: 5rpx;
   color: #666;
   display: inline-block;
 }

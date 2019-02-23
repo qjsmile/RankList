@@ -1,6 +1,6 @@
 <!--pages/movie/categoryRank/categoryRank.wxml-->
 <view class="search-bar">
-  <input class="search-txt" placeholder-class="search-txt-plc" bindfocus="movieSearch" placeholder="请输入关键词搜索" type="text"/>
+  <input class="search-txt" placeholder-class="search-txt-plc" placeholder="请输入关键词搜索" bindfocus="movieSearch"  type="text"/>
 </view>
 
 <view class="content">
