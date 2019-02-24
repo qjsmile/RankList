@@ -51,18 +51,13 @@
         </block>
       </scroll-view>
     </view>
-    <!-- 预告及剧照 -->
+    <!-- 剧照 -->
     <view class='photos'>
-      <text class='subtitle'>预告片 / 剧照</text>
+      <text class='subtitle'>剧照</text>
       <scroll-view scroll-x>
         <block wx:if='{{details.trailers&&details.trailers[0]}}'>
-          <view class='trailer' data-currurl='{{details.trailers[0].resource_url}}' data-trailers='{{details.trailers}}' catchtap="onPlayMovieTrailers">
+          <view class='trailer'>
             <image class='image' src='{{details.trailers[0].medium}}' />
-            <view class='front'>
-              <view class='icon'>
-                <image src='/images/white_play_icon.png' mode='widthFix' />
-              </view>
-            </view>
          </view>
         </block>
 
