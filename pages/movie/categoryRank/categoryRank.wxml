@@ -12,9 +12,9 @@
 
 <view class="content">
   <block wx:for="{{movieRankDate}}" wx:for-item="movieRank" wx:for-index="movieRankIndex" wx:key="movieRankKey">
-    <image class="item-image"
-    src="{{movieRank.img}}"
-    data-id="{{movieRankIndex}}" bindtap="viewMoiveListWithID">
-    </image>
+    <navigator url="/pages/movie/movieList/movieList?id={{movieRankIndex}}">
+        <image class="item-image" src="{{movieRank.img}}">
+      </image>
+    </navigator>
   </block>
 </view>
