@@ -1,3 +1,9 @@
 <!--pages/movie/movieList/movieList.wxml-->
 <import src="/template/movieList/movieListTemplate.wxml"/>
-<template is="movieListTemplate" data="{{movieList: movieList, hasMore: hasMore, hasRank: true}}"/>
+<template is="movieListTemplate" data="{{movieList: movieList, hasRank: true}}"/>
+<block wx:if="{{hasMore}}">
+    <view class="loading-tip">拼命加载中…</view>
+</block>
+<block wx:else>
+    <view class="loading-tip">没有更多内容了</view>
+</block>
