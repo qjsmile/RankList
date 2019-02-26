@@ -1,7 +1,7 @@
 <!--pages/home/home.wxml-->
 <view class ="home-table">
   <block wx:for="{{categoryList}}" wx:for-item="category" wx:for-index="categoryIndex" wx:key="category">
-    <view class="home-category" data-id="{{categoryIndex}}" bindtap="viewCategoryList">
+    <view class="home-category" data-categoryid="{{categoryIndex}}" bindtap="viewCategoryList">
       <view class="home-info">
           <image class="home-logo" src="{{category.image}}"></image>
           <view class="home-right-info">
@@ -14,5 +14,15 @@
   </block>
   <view class='official-account'>
     <official-account></official-account>
+  </view>
+  <block wx:for="{{wlad.ad.banner}}" wx:key="bannerKey">
+    <view class="wl_banner" style="background: #fff;color:#333;">
+      <wl-ad data-id="{{item}}" adData="{{wlad.adData}}" bindclick="wladClick" bindclose="wladClose" class="wl_component">
+      </wl-ad> 
+    </view>
+  </block>
+  <view class="wl_fixed">
+    <wl-ad data-id="{{wlad.ad.fixed}}" adData="{{wlad.adData}}" bindclick="wladClick" bindclose="wladClose" class="wl_component"> 
+    </wl-ad>
   </view>
 </view>

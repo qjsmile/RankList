@@ -35,7 +35,6 @@ Page({
       db.collection('iosGames').skip(iosPageData.gameList.length)
       .get()
       .then(res => {
-        console.log(res.data)
         if (res.data.length > 0) {
           that.setData({
             'iosPageData.gameList': that.data.iosPageData.gameList.concat(res.data),

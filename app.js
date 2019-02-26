@@ -1,4 +1,6 @@
 //app.js
+const App = require('./utils/wlad_sdk.min.js').App;
+
 export const ShareDesc = {
   title: '进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',
   desc: '进来找部电影、找首歌、找本书、找款游戏，打发时间吧！',

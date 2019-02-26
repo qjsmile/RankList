@@ -1,6 +1,8 @@
 // pages/home/home.js
 import { ShareDesc } from '../../app'
 const app = getApp()
+const Page = require('../../utils/wlad_sdk.min.js').Page;
+
 Page({
   data: {
     categoryList: [
@@ -25,11 +27,18 @@ Page({
         "subTitle": "每一款都是人生，酣畅淋漓"
       },
     ],
+    wlad: {
+      adData: {}, 
+      ad: {
+        banner: ["banner_0", "banner_1", "banner_2", "banner_3", "banner_4"],
+        fixed: "fixed"
+      }
+    }
   },
 
   viewCategoryList: function (e) {
     var data = e.currentTarget.dataset
-    const id = Number(data.id)
+    const id = Number(data.categoryid)
     let url = ""
     if (id == 0) {
       url = "../movie/categoryRank/categoryRank"
