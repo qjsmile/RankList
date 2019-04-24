@@ -2,6 +2,12 @@
 <template name="movieListTemplate">
   <view class="movieList">
     <block wx:for="{{movieList}}" wx:for-item="movieItem" wx:for-index="movieIndex" wx:key="movieKey">
+      <block wx:if="{{movieIndex % 15 === 14}}"> 
+        <view class='ad'>
+          <ad unit-id="adunit-0157095c9b1ce010"></ad>
+          <view class="movie-line"></view>
+        </view>
+      </block>
       <navigator url="/pages/movie/movieDetail/movieDetail?title={{movieItem.title}}&id={{movieItem.id}}">
         <view class="movie">
           <view class="movie-image">
