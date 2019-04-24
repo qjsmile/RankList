@@ -34,7 +34,7 @@ Page({
     wlad: {
       adData: {}, 
       ad: {
-        banner: ["banner_0", "banner_1", "banner_2", "banner_3", "banner_4"],
+        banner: ["banner_0", "banner_1", "banner_2"],
         fixed: "fixed"
       }
     }

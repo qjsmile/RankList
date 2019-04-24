@@ -29,3 +29,9 @@
   margin-right: 15rpx;
   border-radius: 15rpx;
 }
+
+.ad {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+  margin-bottom: 0.75rem;
+}

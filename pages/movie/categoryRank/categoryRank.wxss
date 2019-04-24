@@ -34,3 +34,8 @@
   margin-left: .5em;
 }
 
+.ad {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+  margin-bottom: 0.75rem;
+}

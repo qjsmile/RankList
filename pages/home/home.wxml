@@ -14,12 +14,22 @@
   <view>
     <official-account></official-account>
   </view>
-  <block wx:for="{{wlad.ad.banner}}" wx:key="bannerKey">
-    <view class="wl_banner" style="background: #fff;color:#333;">
-      <wl-ad data-id="{{item}}" adData="{{wlad.adData}}" bindclick="wladClick" bindclose="wladClose" class="wl_component">
-      </wl-ad> 
+  <view style='margin-top: 0.5rem;'>
+    <ad unit-id="adunit-0157095c9b1ce010"></ad>
+  </view>
+  <view class="apprecommend">
+    <view class="text">小程序推荐</view>
+    <view>
+      <block wx:for="{{wlad.ad.banner}}" wx:key="bannerKey">
+        <view class="wl_banner" style="background: #fff;color:#333;">
+          <wl-ad data-id="{{item}}" adData="{{wlad.adData}}" bindclick="wladClick" bindclose="wladClose" class="wl_component">
+          </wl-ad> 
+        </view>
+      </block>
     </view>
-  </block>
+
+  </view>
+
   <view class="wl_fixed">
     <wl-ad data-id="{{wlad.ad.fixed}}" adData="{{wlad.adData}}" bindclick="wladClick" bindclose="wladClose" class="wl_component"> 
     </wl-ad>
